@@ -67,6 +67,8 @@ export const searchParamsCache = createSearchParamsCache({
   selected_date: parseAsString.withDefault(
     new Date().toISOString().split('T')[0],
   ),
+  period: parseAsString.withDefault('30d'),
+
   orderId: parseAsString,
   menuId: parseAsInteger,
 });
