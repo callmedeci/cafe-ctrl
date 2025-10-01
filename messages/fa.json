@@ -677,6 +677,12 @@
   },
   "dashboard": {
     "welcome": "به داشبورد خوش آمدید!",
+    "analytics": {
+      "page": {
+        "title": "داشبورد تحلیل‌ها",
+        "description": "عملکرد کسب‌وکار و بینش‌های خود را با تحلیل‌های جامع پیگیری کنید."
+      }
+    },
     "sidebar": {
       "navigation": "ناوبری"
     },
@@ -730,5 +736,77 @@
     "errors": {
       "userNotFound": "کاربر یافت نشد"
     }
+  },
+  "analytics": {
+    "page": {
+      "title": "داشبورد تحلیل‌ها",
+      "description": "عملکرد کسب‌وکار و بینش‌های خود را با تحلیل‌های جامع پیگیری کنید."
+    },
+    "periods": {
+      "7d": "۷ روز",
+      "30d": "۳۰ روز",
+      "90d": "۹۰ روز",
+      "360d": "۱ سال",
+      "custom": "تاریخ سفارشی",
+      "customDate": "سفارشی ({date})"
+    },
+    "charts": {
+      "monthlySales": {
+        "title": "مرور کلی فروش ماهانه",
+        "description": "روند درآمد و سفارش‌ها برای {period}"
+      },
+      "topSales": {
+        "title": "۵ قلم برتر منو",
+        "description": "بهترین اقلام عملکرد برای {period}"
+      }
+    },
+    "cards": {
+      "recentOrders": {
+        "title": "سفارش‌های اخیر",
+        "description": "آخرین سفارش‌های مشتریان از {period}",
+        "viewAll": "مشاهده همه",
+        "noOrders": "هیچ سفارش اخیری یافت نشد"
+      }
+    },
+    "stats": {
+      "totalRevenue": {
+        "title": "کل درآمد",
+        "description": "از {period}"
+      },
+      "totalOrders": {
+        "title": "کل سفارش‌ها",
+        "description": "از {period}"
+      },
+      "menuItems": {
+        "title": "اقلام منو",
+        "description": "اقلام فعال"
+      },
+      "averageOrder": {
+        "title": "میانگین سفارش",
+        "description": "از {period}"
+      }
+    },
+    "dialog": {
+      "orderPreview": {
+        "description": "پیش‌نمایش سریع جزئیات سفارش",
+        "customer": "مشتری",
+        "contact": "اطلاعات تماس",
+        "type": "نوع",
+        "status": "وضعیت",
+        "total": "مجموع",
+        "created": "ایجاد شده در",
+        "orderItems": "اقلام سفارش",
+        "notes": "یادداشت‌ها"
+      }
+    },
+    "status": {
+      "paid": "پرداخت شده",
+      "unpaid": "پرداخت نشده"
+    },
+    "type": {
+      "togo": "بیرون‌بر",
+      "dinein": "سالن"
+    },
+    "walkInCustomer": "مشتری حضوری"
   }
 }

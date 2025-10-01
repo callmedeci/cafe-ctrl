@@ -677,6 +677,12 @@
   },
   "dashboard": {
     "welcome": "Welcome to dashboard!",
+    "analytics": {
+      "page": {
+        "title": "Analytics Dashboard",
+        "description": "Track your business performance and insights with comprehensive analytics."
+      }
+    },
     "sidebar": {
       "navigation": "Navigation"
     },
@@ -730,5 +736,77 @@
     "errors": {
       "userNotFound": "User not found"
     }
+  },
+  "analytics": {
+    "page": {
+      "title": "Analytics Dashboard",
+      "description": "Track your business performance and insights with comprehensive analytics."
+    },
+    "periods": {
+      "7d": "7 Days",
+      "30d": "30 Days",
+      "90d": "90 Days",
+      "360d": "1 Year",
+      "custom": "Custom Date",
+      "customDate": "Custom ({date})"
+    },
+    "charts": {
+      "monthlySales": {
+        "title": "Monthly Sales Overview",
+        "description": "Revenue and order trends for {period}"
+      },
+      "topSales": {
+        "title": "Top 5 Menu Items",
+        "description": "Best performing items for {period}"
+      }
+    },
+    "cards": {
+      "recentOrders": {
+        "title": "Recent Orders",
+        "description": "Latest customer orders from {period}",
+        "viewAll": "View All",
+        "noOrders": "No recent orders found"
+      }
+    },
+    "stats": {
+      "totalRevenue": {
+        "title": "Total Revenue",
+        "description": "from {period}"
+      },
+      "totalOrders": {
+        "title": "Total Orders",
+        "description": "from {period}"
+      },
+      "menuItems": {
+        "title": "Menu Items",
+        "description": "active items"
+      },
+      "averageOrder": {
+        "title": "Average Order",
+        "description": "from {period}"
+      }
+    },
+    "dialog": {
+      "orderPreview": {
+        "description": "Quick preview of order details",
+        "customer": "Customer",
+        "contact": "Contact",
+        "type": "Type",
+        "status": "Status",
+        "total": "Total",
+        "created": "Created",
+        "orderItems": "Order Items",
+        "notes": "Notes"
+      }
+    },
+    "status": {
+      "paid": "Paid",
+      "unpaid": "Unpaid"
+    },
+    "type": {
+      "togo": "To Go",
+      "dinein": "Dine In"
+    },
+    "walkInCustomer": "Walk-in Customer"
   }
 }
