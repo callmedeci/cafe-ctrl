@@ -1,13 +1,16 @@
 import LayoutHeader from '@/components/shared/LayoutHeader';
 import {
+  AverageOrderValueQuickStatsCard,
   PeriodSelector,
   RecentOrdersCard,
   SalesChartCard,
   TopSalesPieChartCard,
+  TotalMenuItemSalesQuickStatsCard,
   TotalMenuItemsQuickStatsCards,
   TotalOrdersCard,
   TotalOrdersQuickStatsCard,
 } from '@/features/analytics';
+
 import { searchParamsCache } from '@/lib/utils';
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
@@ -29,25 +32,30 @@ async function AnalyticsPage({
 
   return (
     <>
-      <LayoutHeader title={t('page.title')} description={t('page.description')}>
+      <LayoutHeader
+        title={t('page.title')}
+        description={t('page.description')}
+        className='gap-2'
+      >
         <PeriodSelector />
       </LayoutHeader>
 
       <div className='flex flex-col gap-4 p-4'>
         <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4'>
-          <TotalOrdersQuickStatsCard />
+          <TotalMenuItemSalesQuickStatsCard />
           <TotalMenuItemsQuickStatsCards />
-          {/* <QuickStatsCards data={mockData.stats} period={periodLabel} /> */}
+          <TotalOrdersQuickStatsCard />
+          <AverageOrderValueQuickStatsCard />
         </div>
 
-        <div className='grid grid-cols-1 gap-4 2xl:grid-cols-3'>
+        <div className='grid grid-cols-1 gap-4 xl:h-[600px] xl:grid-cols-3 xl:items-stretch'>
           <SalesChartCard />
           <TopSalesPieChartCard />
-        </div>
 
-        <div className='grid max-h-[calc(100vh-27rem)] grid-cols-1 gap-4 xl:grid-cols-3'>
           <TotalOrdersCard />
           <RecentOrdersCard />
+
+          <div className='hidden xl:block xl:h-1' />
         </div>
       </div>
     </>

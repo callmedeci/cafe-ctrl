@@ -7,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 import { OrdersActions, OrdersTable } from '@/features/orders';
 import { searchParamsCache } from '@/lib/utils';
 import { Metadata } from 'next';
@@ -33,20 +34,24 @@ async function OrdersPage({
         description={t('page.description')}
       />
 
-      <div className='flex flex-col gap-4 p-4'>
-        <Card>
-          <CardHeader>
-            <CardTitle>{t('table.title')}</CardTitle>
-            <CardDescription>{t('table.description')}</CardDescription>
+      <div className='flex gap-4 p-4'>
+        <ScrollArea type='always' className='w-1 flex-1'>
+          <Card>
+            <CardHeader>
+              <CardTitle>{t('table.title')}</CardTitle>
+              <CardDescription>{t('table.description')}</CardDescription>
 
-            <OrdersActions />
-            <FiltersList filterName='menu_item_filter' />
-          </CardHeader>
+              <OrdersActions />
+              <FiltersList filterName='menu_item_filter' />
+            </CardHeader>
 
-          <CardContent>
-            <OrdersTable />
-          </CardContent>
-        </Card>
+            <CardContent>
+              <OrdersTable />
+            </CardContent>
+          </Card>
+
+          <ScrollBar orientation='horizontal' className='w-full' />
+        </ScrollArea>
       </div>
     </>
   );

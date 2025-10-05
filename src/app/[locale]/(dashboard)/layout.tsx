@@ -1,5 +1,5 @@
 import ReactQueryProvider from '@/components/providers/ReactQueryClientProvider';
-import { ScrollArea } from '@/components/ui/scroll-area';
+import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 import { SidebarProvider } from '@/components/ui/sidebar';
 import { DashboardSidebar } from '@/features/dashboard';
 
@@ -9,9 +9,10 @@ function Dashboardlayout({ children }: LayoutProps<'/[locale]'>) {
       <DashboardSidebar />
 
       <section className='flex h-dvh w-full flex-col'>
-        <main className='bg-background h-dvh flex-1'>
-          <ScrollArea className='h-full flex-1'>
+        <main className='bg-background h-dvh w-full flex-1'>
+          <ScrollArea type='always' className='h-full'>
             <ReactQueryProvider>{children}</ReactQueryProvider>
+            <ScrollBar orientation='vertical' className='h-full' />
           </ScrollArea>
         </main>
       </section>
