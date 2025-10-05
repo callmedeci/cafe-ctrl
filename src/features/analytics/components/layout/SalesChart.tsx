@@ -6,6 +6,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from '@/components/ui/chart';
+import { useIsMobile } from '@/hooks/use-mobile';
 import { formatNumber } from '@/lib/utils';
 import { useLocale } from 'next-intl';
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from 'recharts';
@@ -19,6 +20,8 @@ type SalesChartProps = {
 
 function SalesChart({ data }: SalesChartProps) {
   const locale = useLocale();
+  const isMobile = useIsMobile();
+
   const isFa = locale === 'fa';
 
   const formatCurrency = (value: number) =>
@@ -41,7 +44,12 @@ function SalesChart({ data }: SalesChartProps) {
         style={{ direction: 'ltr' }}
         accessibilityLayer
         data={data}
-        margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+        margin={{
+          top: 20,
+          right: isMobile ? 0 : 30,
+          left: isMobile ? -60 : 20,
+          bottom: 5,
+        }}
       >
         <CartesianGrid />
 
@@ -51,11 +59,14 @@ function SalesChart({ data }: SalesChartProps) {
           tickMargin={8}
           axisLine={false}
           reversed={isFa}
+          tickFormatter={(value) => value.slice(0, 6)}
         />
+
         <YAxis
           tickLine
           axisLine={false}
           tickMargin={10}
+          tick={!isMobile}
           tickFormatter={(value) => formatCurrency(value)}
           orientation={isFa ? 'right' : 'left'}
         />

@@ -6,6 +6,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from '@/components/ui/chart';
+import { useIsMobile } from '@/hooks/use-mobile';
 import { useLocale } from 'next-intl';
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from 'recharts';
 
@@ -18,6 +19,8 @@ type TotalOrdersChartProps = {
 
 function TotalOrdersChart({ data }: TotalOrdersChartProps) {
   const locale = useLocale();
+  const isMobile = useIsMobile();
+
   const isFa = locale === 'fa';
 
   // ---> MUST CHANGE <---
@@ -33,7 +36,12 @@ function TotalOrdersChart({ data }: TotalOrdersChartProps) {
         style={{ direction: 'ltr' }}
         accessibilityLayer
         data={data}
-        margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+        margin={{
+          top: 20,
+          right: isMobile ? 0 : 30,
+          left: isMobile ? -60 : -30,
+          bottom: 5,
+        }}
       >
         <CartesianGrid />
 
@@ -49,6 +57,7 @@ function TotalOrdersChart({ data }: TotalOrdersChartProps) {
           tickLine
           axisLine={false}
           tickMargin={10}
+          tick={!isMobile}
           orientation={isFa ? 'right' : 'left'}
         />
 
