@@ -6,10 +6,9 @@ import { getOrdersCountByRange } from '../../service/analytics-service';
 
 async function TotalOrdersQuickStatsContent() {
   const { period } = searchParamsCache.all();
-  const selectedDate = period.split('d').at(0);
-  if (!selectedDate) return null;
+  const selectedPeriod = parseInt(period.replace('d', ''), 10);
 
-  const startDate = subDays(new Date(), +selectedDate).toISOString();
+  const startDate = subDays(new Date(), selectedPeriod).toISOString();
   const endDate = new Date().toISOString();
 
   const totalOrders = await getOrdersCountByRange(startDate, endDate);

@@ -17,7 +17,7 @@ async function TopSalesCard() {
   const { period } = searchParamsCache.all();
 
   return (
-    <Card className='flex h-full flex-col overflow-hidden'>
+    <Card className='flex h-64 flex-col overflow-hidden xl:h-full'>
       <CardHeader className='flex-shrink-0'>
         <CardTitle className='flex items-center gap-2'>
           <PieChartIcon className='h-5 w-5' />

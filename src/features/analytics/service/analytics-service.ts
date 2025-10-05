@@ -39,7 +39,7 @@ export async function getOrdersDateByRange(
   }
 }
 
-export async function getOrdersTotalPriceByRange(
+export async function getPaidOrdersByRange(
   startDate: string,
   endDate: string,
 ): Promise<

@@ -17,11 +17,10 @@ import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 
 async function RecentOrdersCard() {
   const t = await getTranslations('analytics');
-
   const { period } = searchParamsCache.all();
 
   return (
-    <Card className='flex h-full flex-col overflow-hidden'>
+    <Card className='flex h-64 flex-col overflow-hidden xl:h-full'>
       <CardHeader className='flex-shrink-0'>
         <CardTitle className='flex items-center gap-2'>
           <ShoppingBag className='h-5 w-5' />

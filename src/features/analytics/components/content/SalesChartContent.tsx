@@ -2,16 +2,16 @@ import { getDateLibPromise, searchParamsCache } from '@/lib/utils';
 import { subDays } from 'date-fns';
 import { getLocale } from 'next-intl/server';
 import SalesChart from '../layout/SalesChart';
-import { getOrdersTotalPriceByRange } from '../../service/analytics-service';
+import { getPaidOrdersByRange } from '../../service/analytics-service';
 
 async function SalesChartContent() {
   const { period } = searchParamsCache.all();
-  const selectedPeriod = period.split('d')[0];
+  const selectedPeriod = parseInt(period.replace('d', ''), 10);
 
-  const startDate = subDays(new Date(), +selectedPeriod).toISOString();
+  const startDate = subDays(new Date(), selectedPeriod).toISOString();
   const endDate = new Date().toISOString();
 
-  const { data, error } = await getOrdersTotalPriceByRange(startDate, endDate);
+  const { data, error } = await getPaidOrdersByRange(startDate, endDate);
 
   // ---> MUST CHANGE <---
   if (error || !data) return null;

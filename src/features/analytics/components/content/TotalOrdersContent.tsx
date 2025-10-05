@@ -6,9 +6,9 @@ import TotalOrdersChart from '../layout/TotalOrdersChart';
 
 async function TotalOrdersContent() {
   const { period } = searchParamsCache.all();
-  const selectedPeriod = period.split('d')[0];
+  const selectedPeriod = parseInt(period.replace('d', ''), 10);
 
-  const startDate = subDays(new Date(), +selectedPeriod).toISOString();
+  const startDate = subDays(new Date(), selectedPeriod).toISOString();
   const endDate = new Date().toISOString();
 
   const { data, error } = await getOrdersDateByRange(startDate, endDate);
