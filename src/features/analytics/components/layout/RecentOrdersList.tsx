@@ -28,7 +28,10 @@ function RecentOrdersList({ orders }: { orders: any[] }) {
     <div className='space-y-2'>
       {orders.map((order) => (
         <OrderQuickPreviewDialog order={order} key={order.id}>
-          <div className='hover:bg-accent/50 flex cursor-pointer items-center justify-between rounded-xl border p-3 transition-colors'>
+          <div
+            className='hover:bg-accent/50 flex cursor-pointer items-center justify-between rounded-xl border p-3 transition-colors'
+            style={{ direction: locale === 'fa' ? 'rtl' : 'ltr' }}
+          >
             <div className='flex items-center space-x-2'>
               <div className='flex flex-col'>
                 <span className='max-w-48 text-sm font-medium'>
@@ -58,10 +61,11 @@ function RecentOrdersList({ orders }: { orders: any[] }) {
               </Badge>
 
               <Link
+                className='h-6'
                 href={`/dashboard/orders/view/${order.id}`}
                 onClick={(e) => e.stopPropagation()}
               >
-                <Button variant='secondary' size='icon'>
+                <Button variant='secondary' size='icon' className='!h-full'>
                   <Eye />
                 </Button>
               </Link>

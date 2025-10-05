@@ -94,7 +94,7 @@ function OrdersTableRow({ order }: OrdersTableRowProps) {
 
         {/* CREATED AT */}
         <TableCell className='text-muted-foreground px-2 text-xs md:px-4'>
-          {dateLib.format(new Date(order.created_at), 'd MMM, HH:mm')}
+          {dateLib.format(new Date(order.created_at), 'MMM d, HH:mm')}
         </TableCell>
 
         {/* ACTIONS */}

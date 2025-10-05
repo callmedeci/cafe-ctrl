@@ -11,7 +11,7 @@ export function P({
   return (
     <p
       className={cn(
-        'text-muted-foreground text-sm leading-relaxed text-pretty',
+        'text-muted-foreground text-xs leading-relaxed text-pretty md:text-sm',
         className,
       )}
     >

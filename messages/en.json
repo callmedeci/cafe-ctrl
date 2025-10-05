@@ -677,12 +677,7 @@
   },
   "dashboard": {
     "welcome": "Welcome to dashboard!",
-    "analytics": {
-      "page": {
-        "title": "Analytics Dashboard",
-        "description": "Track your business performance and insights with comprehensive analytics."
-      }
-    },
+
     "sidebar": {
       "navigation": "Navigation"
     },
@@ -740,7 +735,7 @@
   "analytics": {
     "page": {
       "title": "Analytics Dashboard",
-      "description": "Track your business performance and insights with comprehensive analytics."
+      "description": "Track your performance with comprehensive analytics."
     },
     "periods": {
       "7d": "7 Days",

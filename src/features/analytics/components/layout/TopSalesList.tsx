@@ -7,12 +7,15 @@ import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Small } from '@/components/typography/Small';
 import CurrencyDisplay from '@/components/shared/CurrencyDisplay';
 import { Muted } from '@/components/typography/Muted';
+import { useLocale } from 'next-intl';
 
 type TopSalesListProps = {
   sales: TopOrders;
 };
 
 function TopSalesList({ sales }: TopSalesListProps) {
+  const locale = useLocale();
+
   return (
     <div className='space-y-2'>
       {sales.map((sale, index) => {
@@ -20,6 +23,7 @@ function TopSalesList({ sales }: TopSalesListProps) {
           <div
             key={sale.name}
             className='hover:bg-accent/50 flex items-center justify-between rounded-xl border p-3 transition-colors'
+            style={{ direction: locale === 'fa' ? 'rtl' : 'ltr' }}
           >
             <div className='flex items-center space-x-2'>
               <Avatar className='h-8 w-8 md:h-10 md:w-10'>

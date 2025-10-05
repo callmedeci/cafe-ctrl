@@ -38,7 +38,7 @@ async function SalesChartContent() {
     )
     .map((order) => ({
       ...order,
-      date: dateForamt.format(order.date, 'dd MMM'),
+      date: dateForamt.format(order.date, 'MMM dd'),
     }));
 
   return <SalesChart data={chartData} />;

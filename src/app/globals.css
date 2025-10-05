@@ -172,6 +172,13 @@
   --text-muted-soft: oklch(0.55 0.01 240);
 }
 
+.direct-ltr {
+  direction: ltr;
+}
+.direct-rtl {
+  direction: rtl;
+}
+
 @theme {
   --animate-wiggle: wiggle 1s ease-in-out infinite;
   @keyframes wiggle {
