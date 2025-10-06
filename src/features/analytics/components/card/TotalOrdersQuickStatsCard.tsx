@@ -3,6 +3,7 @@ import { ShoppingCart } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 import { Suspense } from 'react';
 import TotalOrdersQuickStatsContent from '../content/TotalOrdersQuickStatsContent';
+import QuickStatsCardSkeleton from '../skeletons/QuickStatsCardSkeleton';
 
 async function TotalOrdersQuickStatsCard() {
   const t = await getTranslations('analytics');
@@ -15,8 +16,7 @@ async function TotalOrdersQuickStatsCard() {
         </CardTitle>
         <ShoppingCart className='text-muted-foreground h-4 w-4' />
       </CardHeader>
-      {/* ---> MUST CHABGE <--- */}
-      <Suspense fallback={null}>
+      <Suspense fallback={<QuickStatsCardSkeleton />}>
         <TotalOrdersQuickStatsContent />
       </Suspense>
     </Card>

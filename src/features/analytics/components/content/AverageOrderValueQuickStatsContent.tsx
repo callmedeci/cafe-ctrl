@@ -1,7 +1,9 @@
 import CurrencyDisplay from '@/components/shared/CurrencyDisplay';
+import ErrorState from '@/components/shared/ErrorState';
 import { CardContent, CardDescription } from '@/components/ui/card';
 import { searchParamsCache } from '@/lib/utils';
 import { subDays } from 'date-fns';
+import { getTranslations } from 'next-intl/server';
 import {
   getOrdersCountByRange,
   getPaidOrdersByRange,
@@ -9,7 +11,7 @@ import {
 
 async function AverageOrderValueQuickStatsContent() {
   const { period } = searchParamsCache.all();
-  const selectedPeriod = parseInt(period.replace('d', ''), 10);
+  const selectedPeriod = Number.parseInt(period.replace('d', ''), 10);
 
   const startDate = subDays(new Date(), selectedPeriod).toISOString();
   const endDate = new Date().toISOString();
@@ -17,10 +19,14 @@ async function AverageOrderValueQuickStatsContent() {
   const { data, error } = await getPaidOrdersByRange(startDate, endDate);
   const totalOrders = await getOrdersCountByRange(startDate, endDate);
 
-  // ---> MUST CHANGE <---
-  if (error || !data) return <p>{error}!!!</p>;
+  const t = await getTranslations('analytics');
 
-  // const t = await getTranslations('analytics');
+  if (error || !data)
+    return (
+      <CardContent>
+        <ErrorState message={t('errors.failedToLoad')} />
+      </CardContent>
+    );
 
   const totalSales = data.reduce((acc, order) => acc + order.total_price, 0);
   const avgOrderValue = totalOrders > 0 ? totalSales / totalOrders : 0;
@@ -31,7 +37,7 @@ async function AverageOrderValueQuickStatsContent() {
         <CurrencyDisplay amount={avgOrderValue} />
       </div>
       <CardDescription className='flex items-center gap-1'>
-        your average income on each order
+        {t('stats.averageOrder.description')}
       </CardDescription>
     </CardContent>
   );

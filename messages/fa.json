@@ -747,7 +747,13 @@
     "charts": {
       "monthlySales": {
         "title": "مرور کلی فروش ماهانه",
-        "description": "روند درآمد و سفارش‌ها برای {period}"
+        "description": "روند درآمد و سفارش‌ها برای {period}",
+        "label": "فروش"
+      },
+      "totalOrders": {
+        "title": "کل سفارش‌ها",
+        "description": "روند سفارش‌ها برای {period}",
+        "label": "سفارش‌ها"
       },
       "topSales": {
         "title": "۵ قلم برتر منو",
@@ -777,7 +783,7 @@
       },
       "averageOrder": {
         "title": "میانگین سفارش",
-        "description": "از {period}"
+        "description": "میانگین درآمد شما در هر سفارش"
       }
     },
     "dialog": {
@@ -801,6 +807,14 @@
       "togo": "بیرون‌بر",
       "dinein": "سالن"
     },
-    "walkInCustomer": "مشتری حضوری"
+    "walkInCustomer": "مشتری حضوری",
+    "errors": {
+      "failedToLoad": "بارگذاری داده‌های تحلیلی ناموفق بود",
+      "tryAgain": "تلاش مجدد",
+      "noData": "داده‌ای موجود نیست"
+    },
+    "loading": {
+      "loadingData": "در حال بارگذاری داده‌های تحلیلی..."
+    }
   }
 }

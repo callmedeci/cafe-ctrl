@@ -10,6 +10,7 @@ import { TrendingUp } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 import { Suspense } from 'react';
 import SalesChartContent from '../content/SalesChartContent';
+import SalesChartSkeleton from '../skeletons/SalesChartSkeleton';
 
 async function SalesChartCard() {
   const t = await getTranslations('analytics');
@@ -27,8 +28,7 @@ async function SalesChartCard() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        {/* ---> MUST CHANGE <--- */}
-        <Suspense fallback={null}>
+        <Suspense fallback={<SalesChartSkeleton />}>
           <SalesChartContent />
         </Suspense>
       </CardContent>

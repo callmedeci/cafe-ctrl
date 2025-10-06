@@ -1,14 +1,14 @@
 'use client';
 
 import {
-  ChartConfig,
+  type ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
 } from '@/components/ui/chart';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { formatNumber } from '@/lib/utils';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from 'recharts';
 
 type SalesChartProps = {
@@ -21,6 +21,7 @@ type SalesChartProps = {
 function SalesChart({ data }: SalesChartProps) {
   const locale = useLocale();
   const isMobile = useIsMobile();
+  const t = useTranslations('analytics.charts.monthlySales');
 
   const isFa = locale === 'fa';
 
@@ -30,10 +31,9 @@ function SalesChart({ data }: SalesChartProps) {
       number: value,
     });
 
-  // ---> MUST CHANGE <---
   const chartConfig: ChartConfig = {
     sales: {
-      label: 'Sales',
+      label: t('label'),
       color: 'var(--color-chart-2)',
     },
   };

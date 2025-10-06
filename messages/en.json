@@ -677,7 +677,6 @@
   },
   "dashboard": {
     "welcome": "Welcome to dashboard!",
-
     "sidebar": {
       "navigation": "Navigation"
     },
@@ -748,7 +747,13 @@
     "charts": {
       "monthlySales": {
         "title": "Monthly Sales Overview",
-        "description": "Revenue and order trends for {period}"
+        "description": "Revenue and order trends for {period}",
+        "label": "Sales"
+      },
+      "totalOrders": {
+        "title": "Total Orders",
+        "description": "Order trends for {period}",
+        "label": "Orders"
       },
       "topSales": {
         "title": "Top 5 Menu Items",
@@ -778,7 +783,7 @@
       },
       "averageOrder": {
         "title": "Average Order",
-        "description": "from {period}"
+        "description": "your average income on each order"
       }
     },
     "dialog": {
@@ -802,6 +807,14 @@
       "togo": "To Go",
       "dinein": "Dine In"
     },
-    "walkInCustomer": "Walk-in Customer"
+    "walkInCustomer": "Walk-in Customer",
+    "errors": {
+      "failedToLoad": "Failed to load analytics data",
+      "tryAgain": "Try again",
+      "noData": "No data available"
+    },
+    "loading": {
+      "loadingData": "Loading analytics data..."
+    }
   }
 }

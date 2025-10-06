@@ -1,20 +1,27 @@
+import ErrorState from '@/components/shared/ErrorState';
 import { getDateLibPromise, searchParamsCache } from '@/lib/utils';
 import { subDays } from 'date-fns';
-import { getLocale } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
 import SalesChart from '../layout/SalesChart';
 import { getPaidOrdersByRange } from '../../service/analytics-service';
 
 async function SalesChartContent() {
   const { period } = searchParamsCache.all();
-  const selectedPeriod = parseInt(period.replace('d', ''), 10);
+  const selectedPeriod = Number.parseInt(period.replace('d', ''), 10);
 
   const startDate = subDays(new Date(), selectedPeriod).toISOString();
   const endDate = new Date().toISOString();
 
   const { data, error } = await getPaidOrdersByRange(startDate, endDate);
 
-  // ---> MUST CHANGE <---
-  if (error || !data) return null;
+  const t = await getTranslations('analytics');
+
+  if (error || !data)
+    return (
+      <div className='flex h-[300px] items-center justify-center'>
+        <ErrorState message={t('errors.failedToLoad')} />
+      </div>
+    );
 
   const locale = await getLocale();
   const dateForamt = await getDateLibPromise(locale);

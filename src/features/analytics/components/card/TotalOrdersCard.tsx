@@ -10,6 +10,7 @@ import { TrendingUp } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 import { Suspense } from 'react';
 import TotalOrdersContent from '../content/TotalOrdersContent';
+import TotalOrdersChartSkeleton from '../skeletons/TotalOrdersChartSkeleton';
 
 async function TotalOrdersCard() {
   const t = await getTranslations('analytics');
@@ -22,19 +23,16 @@ async function TotalOrdersCard() {
           <div>
             <CardTitle className='flex items-center gap-2'>
               <TrendingUp className='h-5 w-5' />
-              {/* ---> MUST CHANGE <--- */}
-              Total Orders
+              {t('charts.totalOrders.title')}
             </CardTitle>
             <CardDescription>
-              {/* ---> MUST CHANGE <--- */}
-              {t('charts.monthlySales.description', { period })}
+              {t('charts.totalOrders.description', { period })}
             </CardDescription>
           </div>
         </div>
       </CardHeader>
       <CardContent>
-        {/* ---> MUST CHANGE <--- */}
-        <Suspense fallback={null}>
+        <Suspense fallback={<TotalOrdersChartSkeleton />}>
           <TotalOrdersContent />
         </Suspense>
       </CardContent>

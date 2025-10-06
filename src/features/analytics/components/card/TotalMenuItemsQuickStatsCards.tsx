@@ -3,6 +3,7 @@ import { Package } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 import { Suspense } from 'react';
 import TotalMenuItemsQuickStatsContent from '../content/TotalMenuItemsQuickStatsContent';
+import QuickStatsCardSkeleton from '../skeletons/QuickStatsCardSkeleton';
 
 async function TotalMenuItemsQuickStatsCards() {
   const t = await getTranslations('analytics');
@@ -16,8 +17,7 @@ async function TotalMenuItemsQuickStatsCards() {
         <Package className='text-muted-foreground h-4 w-4' />
       </CardHeader>
 
-      {/* ---> MUST CHABGE <--- */}
-      <Suspense fallback={null}>
+      <Suspense fallback={<QuickStatsCardSkeleton />}>
         <TotalMenuItemsQuickStatsContent />
       </Suspense>
     </Card>
