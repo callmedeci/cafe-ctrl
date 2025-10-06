@@ -13,6 +13,7 @@ export function useDeleteCategory() {
       deleteCategoryItemApi(id, name),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['menu_categories'] });
+      queryClient.invalidateQueries({ queryKey: ['selected_menu_categories'] });
     },
   });
 

@@ -33,7 +33,7 @@ function EditOrderDialog({ order, children }: EditOrderProps) {
         })}
       </DialogTrigger>
 
-      <DialogContent className='max-h-[90vh] !w-full overflow-y-auto md:min-w-3xl lg:md:min-w-4xl xl:min-w-6xl'>
+      <DialogContent className='max-h-[90vh] !w-full overflow-y-auto md:min-w-3xl'>
         <DialogHeader>
           <DialogTitle>{t('form.edit.title')}</DialogTitle>
           <DialogDescription>{t('form.edit.description')}</DialogDescription>

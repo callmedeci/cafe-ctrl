@@ -11,12 +11,11 @@ import {
 import { cn, getDateLibPromise } from '@/lib/utils';
 import { formatISO } from 'date-fns';
 import { Calendar as CalendarIcon } from 'lucide-react';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { parseAsString, useQueryState } from 'nuqs';
-import { use, useState } from 'react';
+import { startTransition, use, useState } from 'react';
 import { useGetOrdersDate } from '../../hooks/useGetOrdersDate';
 import DateRangePickerSkeleton from '../skeletons/DateRangePickerSkeleton';
-import { useTranslations } from 'next-intl';
 
 function DateRangePicker() {
   const t = useTranslations('orders');
@@ -36,8 +35,13 @@ function DateRangePicker() {
 
   function handleSelectDate(newDate: Date | undefined) {
     if (newDate) {
-      setSelectedDate(formatISO(newDate).split('T')[0]);
-      setTimeout(() => setIsOpen(false), 10);
+      startTransition(() => {
+        setSelectedDate(formatISO(newDate).split('T')[0]);
+      });
+
+      startTransition(() => {
+        setTimeout(() => setIsOpen(false), 10);
+      });
     }
   }
 
@@ -68,7 +72,12 @@ function DateRangePicker() {
           <Calendar
             className='[&_tr]:gap-1'
             modifiers={{
-              highlighted: ordersDate.map((order) => new Date(order)),
+              highlighted: ordersDate.map((orderDate) => {
+                const curDate = orderDate.split('T')[0];
+                const [year, month, day] = curDate.split('-').map(Number);
+
+                return new Date(year, month - 1, day);
+              }),
             }}
             modifiersClassNames={{
               highlighted: 'bg-accent rounded-lg',

@@ -39,7 +39,7 @@ function PeriodSelector() {
             <TabsTrigger
               key={option}
               value={option}
-              className='text-xs xl:text-base'
+              className='text-xs lg:text-sm'
             >
               {t(`periods.${option}`)}
             </TabsTrigger>

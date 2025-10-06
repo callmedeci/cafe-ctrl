@@ -48,7 +48,7 @@ async function AnalyticsPage({
           <AverageOrderValueQuickStatsCard />
         </div>
 
-        <div className='grid grid-cols-1 gap-4 xl:h-[600px] xl:grid-cols-3 xl:items-stretch'>
+        <div className='grid grid-cols-1 gap-4 xl:h-[600px] xl:grid-cols-4 xl:items-stretch'>
           <SalesChartCard />
           <TopSalesPieChartCard />
 

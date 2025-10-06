@@ -38,8 +38,8 @@ function TotalOrdersChart({ data }: TotalOrdersChartProps) {
         data={data}
         margin={{
           top: 20,
-          right: isMobile ? 0 : 30,
-          left: isMobile ? -60 : -30,
+          right: isMobile ? (isFa ? -50 : 10) : 30,
+          left: isMobile ? (isFa ? 10 : -50) : 20,
           bottom: 5,
         }}
       >
@@ -52,7 +52,15 @@ function TotalOrdersChart({ data }: TotalOrdersChartProps) {
           axisLine={false}
           reversed={isFa}
           tickFormatter={(value) => value.slice(0, 6)}
+          interval={
+            data.length > 20
+              ? Math.ceil(data.length / (isMobile ? 4 : 34))
+              : 'preserveStartEnd'
+          }
+          angle={data.length > 15 ? -45 : 0}
+          height={40}
         />
+
         <YAxis
           tickLine
           axisLine={false}
@@ -62,9 +70,7 @@ function TotalOrdersChart({ data }: TotalOrdersChartProps) {
         />
 
         <ChartTooltip
-          content={
-            <ChartTooltipContent cursor={false} indicator='dot' nameKey='' />
-          }
+          content={<ChartTooltipContent cursor={false} indicator='line' />}
         />
 
         <Line
