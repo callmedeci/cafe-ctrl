@@ -7,7 +7,7 @@ function MenuLoading() {
       <span className='sr-only'>Loading menu page...</span>
 
       {/* Header */}
-      <header className='bg-sidebar/95 flex flex-col gap-2 border-b px-4 py-4 backdrop-blur sm:flex-row sm:items-center sm:justify-between'>
+      <header className='bg-sidebar/95 flex flex-col gap-2 border-b px-4 py-[17.2px] backdrop-blur sm:flex-row sm:items-center sm:justify-between'>
         <div className='space-y-2'>
           <Skeleton className='h-6 w-48' aria-hidden='true' />
           <Skeleton className='h-4 w-80' aria-hidden='true' />
