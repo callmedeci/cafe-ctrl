@@ -742,7 +742,8 @@
       "90d": "۹۰ روز",
       "360d": "۱ سال",
       "custom": "تاریخ سفارشی",
-      "customDate": "سفارشی ({date})"
+      "customDate": "سفارشی ({date})",
+      "last": "آخرین"
     },
     "charts": {
       "monthlySales": {
@@ -784,6 +785,10 @@
       "averageOrder": {
         "title": "میانگین سفارش",
         "description": "میانگین درآمد شما در هر سفارش"
+      },
+      "totalSales": {
+        "title": "کل فروش",
+        "description": "کل درآمد از اقلام منو"
       }
     },
     "dialog": {

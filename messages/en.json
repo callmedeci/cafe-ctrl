@@ -742,7 +742,8 @@
       "90d": "90 Days",
       "360d": "1 Year",
       "custom": "Custom Date",
-      "customDate": "Custom ({date})"
+      "customDate": "Custom ({date})",
+      "last": "Last"
     },
     "charts": {
       "monthlySales": {
@@ -784,6 +785,10 @@
       "averageOrder": {
         "title": "Average Order",
         "description": "your average income on each order"
+      },
+      "totalSales": {
+        "title": "Total Sales",
+        "description": "total revenue from menu items"
       }
     },
     "dialog": {
