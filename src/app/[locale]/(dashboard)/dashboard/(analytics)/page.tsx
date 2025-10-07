@@ -48,14 +48,14 @@ async function AnalyticsPage({
           <AverageOrderValueQuickStatsCard />
         </div>
 
-        <div className='grid grid-cols-1 gap-4 xl:h-[600px] xl:grid-cols-4 xl:items-stretch'>
+        <div className='grid grid-cols-1 gap-4 2xl:h-[600px] 2xl:grid-cols-4 2xl:items-stretch'>
           <SalesChartCard />
           <TopSalesPieChartCard />
 
           <TotalOrdersCard />
           <RecentOrdersCard />
 
-          <div className='hidden xl:block xl:h-1' />
+          <div className='hidden 2xl:block 2xl:h-1' />
         </div>
       </div>
     </>

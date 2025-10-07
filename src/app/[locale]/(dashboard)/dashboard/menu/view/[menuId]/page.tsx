@@ -57,6 +57,7 @@ async function MenuItemPageView({
 
   const t = await getTranslations('menu');
   const locale = await getLocale();
+  const isFa = locale === 'fa';
   searchParamsCache.parse(params);
 
   return (
@@ -65,10 +66,11 @@ async function MenuItemPageView({
         <Button variant='link' size='sm' asChild>
           <Link
             href={'/dashboard/menu'}
-            className={`flex ${locale === 'fa' ? 'flex-row-reverse' : ''} items-center`}
+            className={`flex ${isFa ? 'flex-row-reverse' : ''} items-center`}
           >
-            <ArrowLeft />
+            {!isFa && <ArrowLeft />}
             <span className='hidden sm:block'>{t('view.goBack')}</span>
+            {isFa && <ArrowLeft />}
           </Link>
         </Button>
       </LayoutHeader>
