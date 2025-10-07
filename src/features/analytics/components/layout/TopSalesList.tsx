@@ -1,16 +1,16 @@
 'use client';
 
-import DynamicIcon from '@/components/shared/DynamicIcon';
-import { Badge } from '@/components/ui/badge';
-import { TopOrders } from '../../lib/types';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
-import { Small } from '@/components/typography/Small';
 import CurrencyDisplay from '@/components/shared/CurrencyDisplay';
 import { Muted } from '@/components/typography/Muted';
+import { Small } from '@/components/typography/Small';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Badge } from '@/components/ui/badge';
+import { Coffee } from 'lucide-react';
 import { useLocale } from 'next-intl';
+import { TopSales } from '../../lib/types';
 
 type TopSalesListProps = {
-  sales: TopOrders;
+  sales: TopSales[];
 };
 
 function TopSalesList({ sales }: TopSalesListProps) {
@@ -28,11 +28,13 @@ function TopSalesList({ sales }: TopSalesListProps) {
             <div className='flex items-center space-x-2'>
               <Avatar className='h-8 w-8 md:h-10 md:w-10'>
                 <AvatarFallback>
-                  <DynamicIcon
-                    iconName={sale.category?.icon_name || 'Package'}
-                    className='text-muted-foreground size-4 md:size-5'
-                  />
+                  <Coffee className='text-muted-foreground size-4 md:size-5' />
                 </AvatarFallback>
+                <AvatarImage
+                  className='object-cover'
+                  src={sale.image_url || undefined}
+                  alt={`${sale.name} picture`}
+                />
               </Avatar>
               <div className='flex flex-col gap-1'>
                 <span className='text-sm font-medium'>{sale.name}</span>

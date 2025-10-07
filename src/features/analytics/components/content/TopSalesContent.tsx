@@ -1,8 +1,8 @@
 import { searchParamsCache } from '@/lib/utils';
 import { subDays } from 'date-fns';
+import { TopSales } from '../../lib/types';
 import { getTopSalesByDateRange } from '../../service/analytics-service';
 import TopSalesList from '../layout/TopSalesList';
-import { TopOrders } from '../../lib/types';
 
 async function TopSalesContent() {
   const { period } = searchParamsCache.all();
@@ -23,6 +23,7 @@ async function TopSalesContent() {
       if (index === -1)
         newOrder.push({
           ...order.menu_item_id,
+          image_url: order.menu_item_id?.image_url || null,
           quantity: order.quantity,
           price: order.price_at_time,
           name,
@@ -30,7 +31,7 @@ async function TopSalesContent() {
       else newOrder[index]['quantity'] += order.quantity;
 
       return newOrder;
-    }, [] as TopOrders)
+    }, [] as TopSales[])
     .sort((a, b) => b.quantity - a.quantity)
     .slice(0, 7);
 

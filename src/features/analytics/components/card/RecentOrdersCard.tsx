@@ -20,7 +20,7 @@ async function RecentOrdersCard() {
   const { period } = searchParamsCache.all();
 
   return (
-    <Card className='flex h-64 flex-col overflow-hidden xl:h-full'>
+    <Card className='flex h-64 flex-col overflow-hidden 2xl:h-full'>
       <CardHeader className='flex-shrink-0'>
         <CardTitle className='flex items-center gap-2'>
           <ShoppingBag className='h-5 w-5' />

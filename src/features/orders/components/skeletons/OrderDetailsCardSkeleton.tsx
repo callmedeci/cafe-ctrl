@@ -7,70 +7,79 @@ function OrderDetailsCardSkeleton() {
     <Card>
       <CardHeader>
         <CardTitle className='flex items-center gap-2 text-base font-semibold'>
-          <Skeleton className='h-4 w-4 rounded' />
-          <Skeleton className='h-4 w-20 rounded sm:w-28' />
+          <Skeleton className='h-4 w-4 rounded' aria-hidden='true' />
+          <Skeleton className='h-4 w-24 rounded sm:w-32' aria-hidden='true' />
         </CardTitle>
       </CardHeader>
       <CardContent className='space-y-2'>
-        <div className='flex items-center justify-between'>
+        {/* Customer */}
+        <div className='flex items-center justify-between gap-2'>
           <div className='flex items-center gap-1'>
-            <Skeleton className='h-4 w-4 rounded' />
-            <Skeleton className='h-4 w-16 rounded sm:w-20' />
+            <Skeleton className='h-4 w-4 shrink-0 rounded' aria-hidden='true' />
+            <Skeleton className='h-4 w-16 rounded sm:w-20' aria-hidden='true' />
           </div>
-          <Skeleton className='h-4 w-20 rounded sm:w-32' />
+          <Skeleton className='h-4 w-20 rounded sm:w-32' aria-hidden='true' />
         </div>
 
         <Separator />
-        <div className='flex items-center justify-between'>
+
+        {/* Contact */}
+        <div className='flex items-center justify-between gap-2'>
           <div className='flex items-center gap-1'>
-            <Skeleton className='h-4 w-4 rounded' />
-            <Skeleton className='h-4 w-14 rounded sm:w-18' />
+            <Skeleton className='h-4 w-4 shrink-0 rounded' aria-hidden='true' />
+            <Skeleton className='h-4 w-14 rounded sm:w-18' aria-hidden='true' />
           </div>
-          <Skeleton className='h-4 w-24 rounded sm:w-32' />
+          <Skeleton className='h-4 w-24 rounded sm:w-32' aria-hidden='true' />
         </div>
 
         <Separator />
-        <div className='flex items-center justify-between'>
+
+        {/* Type */}
+        <div className='flex items-center justify-between gap-2'>
           <div className='flex items-center gap-1'>
-            <Skeleton className='h-4 w-4 rounded' />
-            <Skeleton className='h-4 w-10 rounded sm:w-14' />
+            <Skeleton className='h-4 w-4 shrink-0 rounded' aria-hidden='true' />
+            <Skeleton className='h-4 w-10 rounded sm:w-14' aria-hidden='true' />
           </div>
-
-          <div className='flex items-center gap-1 px-2 py-1'>
-            <Skeleton className='h-3 w-3 rounded' />
-            <Skeleton className='h-3 w-12 rounded sm:w-16' />
-          </div>
-        </div>
-
-        <Separator />
-        <div className='flex items-center justify-between'>
-          <div className='flex items-center gap-1'>
-            <Skeleton className='h-4 w-4 rounded' />
-            <Skeleton className='h-4 w-12 rounded sm:w-16' />
-          </div>
-
-          <div className='flex items-center gap-1 px-2 py-1'>
-            <Skeleton className='h-3 w-3 rounded' />
-            <Skeleton className='h-3 w-8 rounded sm:w-12' />
+          <div className='flex items-center gap-1 rounded-full border px-2 py-1'>
+            <Skeleton className='h-3 w-3 rounded' aria-hidden='true' />
+            <Skeleton className='h-3 w-12 rounded sm:w-16' aria-hidden='true' />
           </div>
         </div>
 
         <Separator />
-        <div className='flex items-center justify-between'>
+
+        {/* Status */}
+        <div className='flex items-center justify-between gap-2'>
           <div className='flex items-center gap-1'>
-            <Skeleton className='h-4 w-4 rounded' />
-            <Skeleton className='h-4 w-10 rounded sm:w-14' />
+            <Skeleton className='h-4 w-4 shrink-0 rounded' aria-hidden='true' />
+            <Skeleton className='h-4 w-12 rounded sm:w-16' aria-hidden='true' />
           </div>
-          <Skeleton className='h-4 w-16 rounded sm:w-20' />
+          <div className='flex items-center gap-1 rounded-full border px-2 py-1'>
+            <Skeleton className='h-3 w-3 rounded' aria-hidden='true' />
+            <Skeleton className='h-3 w-8 rounded sm:w-12' aria-hidden='true' />
+          </div>
         </div>
 
         <Separator />
-        <div className='flex items-center justify-between'>
+
+        {/* Total */}
+        <div className='flex items-center justify-between gap-2'>
           <div className='flex items-center gap-1'>
-            <Skeleton className='h-4 w-4 rounded' />
-            <Skeleton className='h-4 w-14 rounded sm:w-18' />
+            <Skeleton className='h-4 w-4 shrink-0 rounded' aria-hidden='true' />
+            <Skeleton className='h-4 w-10 rounded sm:w-14' aria-hidden='true' />
           </div>
-          <Skeleton className='h-4 w-28 rounded sm:w-36' />
+          <Skeleton className='h-4 w-16 rounded sm:w-20' aria-hidden='true' />
+        </div>
+
+        <Separator />
+
+        {/* Created */}
+        <div className='flex items-center justify-between gap-2'>
+          <div className='flex items-center gap-1'>
+            <Skeleton className='h-4 w-4 shrink-0 rounded' aria-hidden='true' />
+            <Skeleton className='h-4 w-14 rounded sm:w-18' aria-hidden='true' />
+          </div>
+          <Skeleton className='h-4 w-28 rounded sm:w-36' aria-hidden='true' />
         </div>
       </CardContent>
     </Card>

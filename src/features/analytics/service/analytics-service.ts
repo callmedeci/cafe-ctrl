@@ -3,6 +3,7 @@
 import { createClient } from '@/supabase/server';
 import { GetActionResult } from '@/types';
 import { OrderRow } from '@/types/tables';
+import { TopSalesResponse } from '../lib/types';
 
 export async function getOrdersDateByRange(
   startDate: string,
@@ -101,13 +102,13 @@ export async function getOrdersCountByRange(
 export async function getTopSalesByDateRange(
   startDate: string,
   endDate: string,
-) {
+): Promise<GetActionResult<TopSalesResponse[]>> {
   try {
     const supabase = await createClient();
     const { data: orders, error: ordersError } = await supabase
       .from('order_items')
       .select(
-        'menu_item_id(name, category(name, icon_name)), quantity, price_at_time',
+        'menu_item_id(name, image_url, category(name, icon_name)), quantity, price_at_time',
       )
       .gte('created_at', startDate)
       .lte('created_at', endDate)

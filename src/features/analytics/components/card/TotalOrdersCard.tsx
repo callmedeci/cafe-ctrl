@@ -17,7 +17,7 @@ async function TotalOrdersCard() {
   const { period } = searchParamsCache.all();
 
   return (
-    <Card className='xl:col-span-3'>
+    <Card className='2xl:col-span-3'>
       <CardHeader>
         <div className='flex items-center justify-between'>
           <div>
