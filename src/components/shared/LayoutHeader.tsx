@@ -46,7 +46,8 @@ function LayoutHeader({
         )}
       >
         {children}
-        <SidebarTrigger className='block md:hidden' />
+
+        <SidebarTrigger className='flex md:hidden' />
       </div>
     </header>
   );

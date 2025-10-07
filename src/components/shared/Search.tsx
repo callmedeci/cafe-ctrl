@@ -35,7 +35,7 @@ function Search({
       <div className='relative flex-1'>
         <SearchIcon
           className={cn(
-            'absolute top-2 size-3 md:size-4',
+            'absolute top-3 size-3 md:top-2 md:size-4',
             isFa ? 'right-2 md:right-3' : 'left-2 md:left-3',
           )}
         />
