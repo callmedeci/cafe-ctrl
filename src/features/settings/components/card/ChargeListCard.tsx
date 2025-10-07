@@ -44,7 +44,9 @@ function ChargeListCard({ charges }: ChargeListCardProps) {
               </div>
               <div className='flex-1'>
                 <div className='flex items-center gap-2'>
-                  <span className='text-sm font-medium'>{charge.name}</span>
+                  <span className='flex-1 text-sm font-medium'>
+                    {charge.name}
+                  </span>
                   {charge.is_active && (
                     <Badge variant='secondary' className='text-xs'>
                       {t('charges.active')}
