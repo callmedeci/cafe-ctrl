@@ -1,7 +1,7 @@
 import ErrorState from '@/components/shared/ErrorState';
-import { getDateLibPromise, searchParamsCache } from '@/lib/utils';
+import { searchParamsCache } from '@/lib/utils';
 import { subDays } from 'date-fns';
-import { getLocale, getTranslations } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
 import { getOrdersDateByRange } from '../../service/analytics-service';
 import TotalOrdersChart from '../layout/TotalOrdersChart';
 
@@ -23,29 +23,21 @@ async function TotalOrdersContent() {
       </div>
     );
 
-  const locale = await getLocale();
-  const dateForamt = await getDateLibPromise(locale);
+  const chartData = data.reduce(
+    (newOrder, order) => {
+      const formatedDate = order.created_at.split('T')[0];
+      const index = newOrder.findIndex((od) => od.date === formatedDate);
 
-  const chartData = data
-    .reduce(
-      (newOrder, order) => {
-        const formatedDate = order.created_at.split('T')[0];
-        const index = newOrder.findIndex((od) => od.date === formatedDate);
+      if (index === -1) newOrder.push({ date: formatedDate, orders: 1 });
+      else newOrder[index]['orders']++;
 
-        if (index === -1) newOrder.push({ date: formatedDate, orders: 1 });
-        else newOrder[index]['orders']++;
-
-        return newOrder;
-      },
-      [] as {
-        date: string;
-        orders: number;
-      }[],
-    )
-    .map((order) => ({
-      ...order,
-      date: dateForamt.format(order.date, 'dd MMMM'),
-    }));
+      return newOrder;
+    },
+    [] as {
+      date: string;
+      orders: number;
+    }[],
+  );
 
   return <TotalOrdersChart data={chartData} />;
 }

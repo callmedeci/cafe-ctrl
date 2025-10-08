@@ -1,9 +1,9 @@
 import ErrorState from '@/components/shared/ErrorState';
-import { getDateLibPromise, searchParamsCache } from '@/lib/utils';
+import { searchParamsCache } from '@/lib/utils';
 import { subDays } from 'date-fns';
-import { getLocale, getTranslations } from 'next-intl/server';
-import SalesChart from '../layout/SalesChart';
+import { getTranslations } from 'next-intl/server';
 import { getPaidOrdersByRange } from '../../service/analytics-service';
+import SalesChart from '../layout/SalesChart';
 
 async function SalesChartContent() {
   const { period } = searchParamsCache.all();
@@ -23,30 +23,22 @@ async function SalesChartContent() {
       </div>
     );
 
-  const locale = await getLocale();
-  const dateForamt = await getDateLibPromise(locale);
+  const chartData = data.reduce(
+    (newOrder, order) => {
+      const formatedDate = order.created_at.split('T')[0];
+      const index = newOrder.findIndex((od) => od.date === formatedDate);
 
-  const chartData = data
-    .reduce(
-      (newOrder, order) => {
-        const formatedDate = order.created_at.split('T')[0];
-        const index = newOrder.findIndex((od) => od.date === formatedDate);
+      if (index === -1)
+        newOrder.push({ date: formatedDate, sales: order.total_price });
+      else newOrder[index]['sales'] += order.total_price;
 
-        if (index === -1)
-          newOrder.push({ date: formatedDate, sales: order.total_price });
-        else newOrder[index]['sales'] += order.total_price;
-
-        return newOrder;
-      },
-      [] as {
-        date: string;
-        sales: number;
-      }[],
-    )
-    .map((order) => ({
-      ...order,
-      date: dateForamt.format(order.date, 'MMM dd'),
-    }));
+      return newOrder;
+    },
+    [] as {
+      date: string;
+      sales: number;
+    }[],
+  );
 
   return <SalesChart data={chartData} />;
 }

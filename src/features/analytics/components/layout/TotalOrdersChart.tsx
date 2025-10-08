@@ -7,8 +7,10 @@ import {
   ChartTooltipContent,
 } from '@/components/ui/chart';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { getDateLibPromise } from '@/lib/utils';
 import { useLocale, useTranslations } from 'next-intl';
-import { CartesianGrid, Line, LineChart, XAxis, YAxis } from 'recharts';
+import { use } from 'react';
+import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts';
 
 type TotalOrdersChartProps = {
   data: {
@@ -18,9 +20,10 @@ type TotalOrdersChartProps = {
 };
 
 function TotalOrdersChart({ data }: TotalOrdersChartProps) {
-  const locale = useLocale();
   const isMobile = useIsMobile();
+  const locale = useLocale();
   const t = useTranslations('analytics.charts.totalOrders');
+  const dateFormat = use(getDateLibPromise(locale));
 
   const isFa = locale === 'fa';
 
@@ -31,56 +34,51 @@ function TotalOrdersChart({ data }: TotalOrdersChartProps) {
     },
   };
   return (
-    <ChartContainer config={chartConfig}>
-      <LineChart
-        style={{ direction: 'ltr' }}
-        accessibilityLayer
-        data={data}
-        margin={{
-          top: 20,
-          right: isMobile ? (isFa ? -50 : 10) : 30,
-          left: isMobile ? (isFa ? 10 : -50) : 20,
-          bottom: 5,
-        }}
-      >
-        <CartesianGrid />
+    <ChartContainer config={chartConfig} className='h-[300px] w-full'>
+      <BarChart style={{ direction: 'ltr' }} accessibilityLayer data={data}>
+        <CartesianGrid vertical={false} />
 
         <XAxis
           tickLine
           dataKey='date'
-          tickMargin={8}
+          tickMargin={10}
           axisLine={false}
           reversed={isFa}
-          tickFormatter={(value) => value.slice(0, 6)}
+          tickFormatter={(value) =>
+            dateFormat.format(new Date(value), 'dd MMM').slice(0, 6)
+          }
           interval={
             data.length > 20
-              ? Math.ceil(data.length / (isMobile ? 4 : 34))
+              ? Math.ceil(data.length / (isMobile ? 8 : 36))
               : 'preserveStartEnd'
           }
           angle={data.length > 15 ? -45 : 0}
           height={40}
+          tickSize={5}
         />
 
         <YAxis
-          tickLine
+          tickLine={!isMobile}
           axisLine={false}
           tickMargin={10}
-          tick={!isMobile}
           orientation={isFa ? 'right' : 'left'}
         />
 
         <ChartTooltip
-          content={<ChartTooltipContent cursor={false} indicator='line' />}
+          content={
+            <ChartTooltipContent
+              cursor={false}
+              indicator='dot'
+              color='var(--color-orders)'
+              labelFormatter={(value: string) => (
+                <p>{dateFormat.format(new Date(value), 'dd MMMM')}</p>
+              )}
+            />
+          }
         />
 
-        <Line
-          dataKey='orders'
-          stroke='var(--color-orders)'
-          strokeWidth={2}
-          dot={{ fill: 'var(--color-orders)' }}
-          activeDot={{ r: 6 }}
-        />
-      </LineChart>
+        <Bar dataKey='orders' fill='var(--color-orders)' radius={4} />
+      </BarChart>
     </ChartContainer>
   );
 }

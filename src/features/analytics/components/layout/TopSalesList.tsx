@@ -50,7 +50,10 @@ function TopSalesList({ sales }: TopSalesListProps) {
               </div>
 
               <Muted>
-                <CurrencyDisplay amount={sale.price * sale.quantity} />
+                <CurrencyDisplay
+                  amount={sale.price * sale.quantity}
+                  className='text-muted-foreground !size-3 md:!size-4'
+                />
               </Muted>
             </div>
           </div>

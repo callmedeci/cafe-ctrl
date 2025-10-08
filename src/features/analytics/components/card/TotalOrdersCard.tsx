@@ -11,6 +11,7 @@ import { getTranslations } from 'next-intl/server';
 import { Suspense } from 'react';
 import TotalOrdersContent from '../content/TotalOrdersContent';
 import TotalOrdersChartSkeleton from '../skeletons/TotalOrdersChartSkeleton';
+import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 
 async function TotalOrdersCard() {
   const t = await getTranslations('analytics');
@@ -31,9 +32,12 @@ async function TotalOrdersCard() {
           </div>
         </div>
       </CardHeader>
-      <CardContent>
+      <CardContent className='flex w-full'>
         <Suspense fallback={<TotalOrdersChartSkeleton />}>
-          <TotalOrdersContent />
+          <ScrollArea className='w-1 flex-1'>
+            <TotalOrdersContent />
+            <ScrollBar orientation='horizontal' className='w-full' />
+          </ScrollArea>
         </Suspense>
       </CardContent>
     </Card>
