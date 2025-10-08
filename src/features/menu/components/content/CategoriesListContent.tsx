@@ -54,11 +54,11 @@ function CategoriesListContent() {
       <CommandEmpty>{t('categories.noCategoriesAvailable')}</CommandEmpty>
       <CommandList>
         <CommandGroup>
-          {categories.map((category) => {
+          {categories.map((category, i, array) => {
             return (
               <CommandItem
                 key={category.id}
-                className='justify-between border-b'
+                className={`justify-between py-1 text-xs md:py-2 md:text-sm ${i < array.length - 1 ? 'border-b' : ''} `}
               >
                 <span className='flex gap-1'>
                   <DynamicIcon iconName={category.icon_name || ''} />

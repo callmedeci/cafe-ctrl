@@ -7,27 +7,32 @@ import OrdersTableFooterContent from './OrdersTableFooterContent';
 import OrdersTableHeader from './OrdersTableHeader';
 import OrdersTableFooterSkeleton from '../skeletons/OrdersTableFooterSkeleton';
 import { searchParamsCache } from '@/lib/utils';
+import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 
 function OrdersTable() {
   const { selected_date } = searchParamsCache.all();
 
   return (
-    <div className='rounded-md border'>
-      <Table>
-        <OrdersTableHeader />
-        <Suspense
-          fallback={<OrdersTableLoadingSkeleton />}
-          key={`selectedDate=${selected_date}`}
-        >
-          <OrdersTableBody />
-        </Suspense>
-
-        <TableFooter>
-          <Suspense fallback={<OrdersTableFooterSkeleton />}>
-            <OrdersTableFooterContent />
+    <div className='flex rounded-md border'>
+      <ScrollArea className='w-1 flex-1'>
+        <Table>
+          <OrdersTableHeader />
+          <Suspense
+            fallback={<OrdersTableLoadingSkeleton />}
+            key={`selectedDate=${selected_date}`}
+          >
+            <OrdersTableBody />
           </Suspense>
-        </TableFooter>
-      </Table>
+
+          <TableFooter>
+            <Suspense fallback={<OrdersTableFooterSkeleton />}>
+              <OrdersTableFooterContent />
+            </Suspense>
+          </TableFooter>
+        </Table>
+
+        <ScrollBar orientation='horizontal' className='w-full' />
+      </ScrollArea>
     </div>
   );
 }
