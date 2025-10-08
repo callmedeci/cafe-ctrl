@@ -4,14 +4,15 @@ import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { useExcludedColumnsQuery } from '@/hooks/useExcludedColumnsQuery';
 import { cn } from '@/lib/utils';
 import { ChevronDown } from 'lucide-react';
+import { useLocale, useTranslations } from 'next-intl';
 import { useOptimistic, useState, useTransition } from 'react';
 import { Button } from '../ui/button';
-import { useLocale, useTranslations } from 'next-intl';
 
 type TableColumnFilterProps = {
   options: {
@@ -28,7 +29,6 @@ function TableColumnFilter({ options }: TableColumnFilterProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isPending, startTransition] = useTransition();
 
-  // Optimistic state for immediate UI updates
   const [optimisticExcludedColumns, setOptimisticExcludedColumns] =
     useOptimistic(
       excludedColumns,
@@ -70,7 +70,7 @@ function TableColumnFilter({ options }: TableColumnFilterProps) {
         <Button
           variant='secondary'
           className={cn(
-            'ml-auto transition-opacity duration-200 [&_span]:hidden sm:[&_span]:block',
+            'ml-auto transition-opacity duration-200',
             isPending && 'opacity-70',
           )}
           disabled={isPending}
@@ -91,25 +91,27 @@ function TableColumnFilter({ options }: TableColumnFilterProps) {
           !isOpen && isPending && 'scale-95 opacity-0',
         )}
       >
-        {options.map((option) => {
+        {options.map((option, i, array) => {
           const isChecked =
             optimisticExcludedColumns.length === 0
               ? option.defaultVisible !== false
               : !optimisticExcludedColumns.includes(option.value);
 
           return (
-            <DropdownMenuCheckboxItem
-              key={option.value}
-              className={cn(
-                'py-1 text-xs capitalize transition-all duration-150 md:py-2 md:text-sm',
-                isPending && 'pointer-events-none opacity-60',
-                locale === 'fa' ? 'flex-row-reverse' : '',
-              )}
-              checked={isChecked}
-              onSelect={(event) => handleColumnToggle(option.value, event)}
-            >
-              {option.label}
-            </DropdownMenuCheckboxItem>
+            <div key={option.value}>
+              <DropdownMenuCheckboxItem
+                className={cn(
+                  'justify-between py-1 text-xs md:py-2 md:text-sm',
+                  isPending && 'pointer-events-none opacity-60',
+                  locale === 'fa' ? 'flex-row-reverse' : '',
+                )}
+                checked={isChecked}
+                onSelect={(event) => handleColumnToggle(option.value, event)}
+              >
+                {option.label}
+              </DropdownMenuCheckboxItem>
+              {i < array.length - 1 && <DropdownMenuSeparator />}
+            </div>
           );
         })}
       </DropdownMenuContent>

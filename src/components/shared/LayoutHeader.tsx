@@ -26,7 +26,7 @@ function LayoutHeader({
   return (
     <header
       className={cn(
-        'bg-sidebar/95 flex justify-between border-b px-4 py-4 backdrop-blur',
+        'bg-sidebar/95 sticky top-0 z-50 flex w-full justify-between border-b px-4 py-4 backdrop-blur',
         isFa && 'flex-row-reverse',
       )}
     >

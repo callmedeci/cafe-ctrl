@@ -3,6 +3,7 @@
 import { useFiltersQuery } from '@/hooks/useFiltersQuery';
 import { CommandEmpty } from 'cmdk';
 import { Check, ListFilter as Filter, Inbox } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { Button } from '../ui/button';
 import {
@@ -14,7 +15,6 @@ import {
 } from '../ui/command';
 import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
 import DynamicIcon from './DynamicIcon';
-import { useTranslations } from 'next-intl';
 
 type FilterByProps = {
   options: {
@@ -61,7 +61,7 @@ function FilterBy({ options, filterName }: FilterByProps) {
           </CommandEmpty>
           <CommandList>
             <CommandGroup>
-              {options.map((option, i) => {
+              {options.map((option, i, array) => {
                 const selectedFilter = filters.find(
                   (f) =>
                     f?.toLocaleLowerCase() === option.value.toLocaleLowerCase(),
@@ -70,7 +70,7 @@ function FilterBy({ options, filterName }: FilterByProps) {
                 return (
                   <CommandItem
                     key={i}
-                    className='justify-between border-b py-1 text-xs md:py-2 md:text-sm'
+                    className={`justify-between py-1 text-xs md:py-2 md:text-sm ${i < array.length - 1 ? 'border-b' : ''}`}
                     onSelect={() => handleUpdateFilter(option.value)}
                   >
                     <span className='flex items-center gap-1'>
