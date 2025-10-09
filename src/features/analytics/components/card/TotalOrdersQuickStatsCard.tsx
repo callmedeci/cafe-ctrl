@@ -15,6 +15,7 @@ import { searchParamsCache } from '@/lib/utils';
 async function TotalOrdersQuickStatsCard() {
   const t = await getTranslations('analytics');
   const { period } = searchParamsCache.all();
+  const periodText = t(`periods.${period}`);
 
   return (
     <Card>
@@ -30,7 +31,7 @@ async function TotalOrdersQuickStatsCard() {
 
       <CardFooter>
         <CardDescription className='flex items-center gap-1'>
-          {t('stats.totalOrders.description', { period })}
+          {t('stats.totalOrders.description', { period: periodText })}
         </CardDescription>
       </CardFooter>
     </Card>

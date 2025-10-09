@@ -13,14 +13,15 @@ import QuickStatsCardSkeleton from '../skeletons/QuickStatsCardSkeleton';
 import { searchParamsCache } from '@/lib/utils';
 
 async function TotalMenuItemSalesQuickStatsCard() {
-  const t = await getTranslations('analytics.stats');
+  const t = await getTranslations('analytics');
   const { period } = searchParamsCache.all();
+  const periodText = t(`periods.${period}`);
 
   return (
     <Card>
       <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
         <CardTitle className='text-sm font-medium'>
-          {t('totalSales.title')}
+          {t('stats.totalSales.title')}
         </CardTitle>
         <DollarSign className='text-muted-foreground h-4 w-4' />
       </CardHeader>
@@ -30,7 +31,7 @@ async function TotalMenuItemSalesQuickStatsCard() {
 
       <CardFooter>
         <CardDescription className='flex items-center gap-1'>
-          {t('totalRevenue.description', { period })}
+          {t('stats.totalRevenue.description', { period: periodText })}
         </CardDescription>
       </CardFooter>
     </Card>

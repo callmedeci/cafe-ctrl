@@ -39,7 +39,14 @@ function TotalOrdersChart({ data }: TotalOrdersChartProps) {
         style={{ direction: 'ltr' }}
         accessibilityLayer
         data={data}
-        margin={{ top: 20, right: 20, left: 20, bottom: 20 }}
+        margin={{
+          top: 20,
+
+          ...(!isFa && { left: -35, right: 10 }),
+          ...(isFa && { right: -35, left: 10 }),
+
+          bottom: 20,
+        }}
       >
         <CartesianGrid vertical={false} />
 

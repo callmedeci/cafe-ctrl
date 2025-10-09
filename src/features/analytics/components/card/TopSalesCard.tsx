@@ -15,6 +15,7 @@ import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 async function TopSalesCard() {
   const t = await getTranslations('analytics');
   const { period } = searchParamsCache.all();
+  const periodText = t(`periods.${period}`);
 
   return (
     <Card className='flex h-64 flex-col overflow-hidden 2xl:h-full'>
@@ -24,7 +25,7 @@ async function TopSalesCard() {
           {t('charts.topSales.title')}
         </CardTitle>
         <CardDescription>
-          {t('charts.topSales.description', { period })}
+          {t('charts.topSales.description', { period: periodText })}
         </CardDescription>
       </CardHeader>
       <CardContent className='min-h-0 flex-1 overflow-hidden'>

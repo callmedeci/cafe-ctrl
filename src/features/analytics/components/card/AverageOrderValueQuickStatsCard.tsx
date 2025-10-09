@@ -10,9 +10,12 @@ import { getTranslations } from 'next-intl/server';
 import { Suspense } from 'react';
 import AverageOrderValueQuickStatsContent from '../content/AverageOrderValueQuickStatsContent';
 import QuickStatsCardSkeleton from '../skeletons/QuickStatsCardSkeleton';
+import { searchParamsCache } from '@/lib/utils';
 
 async function AverageOrderValueQuickStatsCard() {
   const t = await getTranslations('analytics');
+  const { period } = searchParamsCache.all();
+  const periodText = t(`periods.${period}`);
 
   return (
     <Card>
@@ -28,7 +31,7 @@ async function AverageOrderValueQuickStatsCard() {
 
       <CardFooter>
         <CardDescription className='flex items-center gap-1'>
-          {t('stats.averageOrder.description')}
+          {t('stats.averageOrder.description', { period: periodText })}
         </CardDescription>
       </CardFooter>
     </Card>

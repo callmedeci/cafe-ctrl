@@ -46,7 +46,13 @@ function SalesChart({ data }: SalesChartProps) {
         style={{ direction: 'ltr' }}
         accessibilityLayer
         data={data}
-        margin={{ top: 20, right: 20, left: 20, bottom: 20 }}
+        margin={{
+          top: 20,
+          ...(isFa && { left: 10 }),
+          ...(!isFa && { right: 10 }),
+
+          bottom: 20,
+        }}
       >
         <CartesianGrid vertical={false} />
 

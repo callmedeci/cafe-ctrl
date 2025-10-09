@@ -16,6 +16,7 @@ import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 async function TotalOrdersCard() {
   const t = await getTranslations('analytics');
   const { period } = searchParamsCache.all();
+  const periodText = t(`periods.${period}`);
 
   return (
     <Card className='2xl:col-span-3'>
@@ -27,7 +28,7 @@ async function TotalOrdersCard() {
               {t('charts.totalOrders.title')}
             </CardTitle>
             <CardDescription>
-              {t('charts.totalOrders.description', { period })}
+              {t('charts.totalOrders.description', { period: periodText })}
             </CardDescription>
           </div>
         </div>
