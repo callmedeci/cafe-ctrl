@@ -35,7 +35,12 @@ function TotalOrdersChart({ data }: TotalOrdersChartProps) {
   };
   return (
     <ChartContainer config={chartConfig} className='h-[300px] w-full'>
-      <BarChart style={{ direction: 'ltr' }} accessibilityLayer data={data}>
+      <BarChart
+        style={{ direction: 'ltr' }}
+        accessibilityLayer
+        data={data}
+        margin={{ top: 20, right: 20, left: 20, bottom: 20 }}
+      >
         <CartesianGrid vertical={false} />
 
         <XAxis

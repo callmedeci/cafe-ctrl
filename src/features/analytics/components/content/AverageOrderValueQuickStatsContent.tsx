@@ -1,6 +1,6 @@
 import CurrencyDisplay from '@/components/shared/CurrencyDisplay';
 import ErrorState from '@/components/shared/ErrorState';
-import { CardContent, CardDescription } from '@/components/ui/card';
+import { CardContent } from '@/components/ui/card';
 import { searchParamsCache } from '@/lib/utils';
 import { subDays } from 'date-fns';
 import { getTranslations } from 'next-intl/server';
@@ -36,9 +36,6 @@ async function AverageOrderValueQuickStatsContent() {
       <div className='text-2xl font-bold'>
         <CurrencyDisplay amount={avgOrderValue} />
       </div>
-      <CardDescription className='flex items-center gap-1'>
-        {t('stats.averageOrder.description')}
-      </CardDescription>
     </CardContent>
   );
 }

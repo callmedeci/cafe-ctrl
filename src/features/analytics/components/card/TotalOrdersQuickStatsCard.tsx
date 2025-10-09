@@ -1,12 +1,20 @@
-import { Card, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Card,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 import { ShoppingCart } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 import { Suspense } from 'react';
 import TotalOrdersQuickStatsContent from '../content/TotalOrdersQuickStatsContent';
 import QuickStatsCardSkeleton from '../skeletons/QuickStatsCardSkeleton';
+import { searchParamsCache } from '@/lib/utils';
 
 async function TotalOrdersQuickStatsCard() {
   const t = await getTranslations('analytics');
+  const { period } = searchParamsCache.all();
 
   return (
     <Card>
@@ -19,6 +27,12 @@ async function TotalOrdersQuickStatsCard() {
       <Suspense fallback={<QuickStatsCardSkeleton />}>
         <TotalOrdersQuickStatsContent />
       </Suspense>
+
+      <CardFooter>
+        <CardDescription className='flex items-center gap-1'>
+          {t('stats.totalOrders.description', { period })}
+        </CardDescription>
+      </CardFooter>
     </Card>
   );
 }

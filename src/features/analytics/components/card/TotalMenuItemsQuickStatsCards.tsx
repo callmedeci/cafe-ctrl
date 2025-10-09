@@ -1,4 +1,10 @@
-import { Card, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Card,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 import { Package } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 import { Suspense } from 'react';
@@ -20,6 +26,12 @@ async function TotalMenuItemsQuickStatsCards() {
       <Suspense fallback={<QuickStatsCardSkeleton />}>
         <TotalMenuItemsQuickStatsContent />
       </Suspense>
+
+      <CardFooter>
+        <CardDescription className='flex items-center gap-1'>
+          {t('stats.menuItems.description')}
+        </CardDescription>
+      </CardFooter>
     </Card>
   );
 }

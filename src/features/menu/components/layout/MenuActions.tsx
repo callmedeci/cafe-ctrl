@@ -5,7 +5,6 @@ import Search from '@/components/shared/Search';
 import SortBy from '@/components/shared/SortBy';
 import TableColumnFilter from '@/components/shared/TableColumnFilter';
 import { useTranslations } from 'next-intl';
-import { Suspense } from 'react';
 import {
   useMenuExcludedColumnsOptions,
   useMenuSortByOptions,
@@ -21,9 +20,7 @@ function MenuActions() {
   return (
     <div className='my-2 flex flex-col-reverse gap-2 xl:flex-row'>
       <div className='flex items-center gap-1 md:gap-2'>
-        <Suspense>
-          <MenuItemsFilter />
-        </Suspense>
+        <MenuItemsFilter />
         <SortBy options={sortBy} />
 
         <TableColumnFilter options={excludedColumns} />

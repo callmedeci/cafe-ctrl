@@ -1,8 +1,14 @@
-import { Card, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Card,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 import { Percent } from 'lucide-react';
+import { getTranslations } from 'next-intl/server';
 import { Suspense } from 'react';
 import AverageOrderValueQuickStatsContent from '../content/AverageOrderValueQuickStatsContent';
-import { getTranslations } from 'next-intl/server';
 import QuickStatsCardSkeleton from '../skeletons/QuickStatsCardSkeleton';
 
 async function AverageOrderValueQuickStatsCard() {
@@ -19,6 +25,12 @@ async function AverageOrderValueQuickStatsCard() {
       <Suspense fallback={<QuickStatsCardSkeleton />}>
         <AverageOrderValueQuickStatsContent />
       </Suspense>
+
+      <CardFooter>
+        <CardDescription className='flex items-center gap-1'>
+          {t('stats.averageOrder.description')}
+        </CardDescription>
+      </CardFooter>
     </Card>
   );
 }

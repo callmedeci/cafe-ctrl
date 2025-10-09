@@ -42,7 +42,12 @@ function SalesChart({ data }: SalesChartProps) {
 
   return (
     <ChartContainer config={chartConfig} className='h-[300px] w-full'>
-      <LineChart style={{ direction: 'ltr' }} accessibilityLayer data={data}>
+      <LineChart
+        style={{ direction: 'ltr' }}
+        accessibilityLayer
+        data={data}
+        margin={{ top: 20, right: 20, left: 20, bottom: 20 }}
+      >
         <CartesianGrid vertical={false} />
 
         <XAxis
