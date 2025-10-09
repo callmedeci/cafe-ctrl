@@ -40,9 +40,31 @@ export async function generateMetadata({
   const { data: order, error } = await getOrderById(orderId);
   if (!order || error) notFound();
 
-  // const t = await getTranslations();
+  const t = await getTranslations('orders.view.metadata');
+
+  const orderDisplayName = `#${order.id}`;
+
   return {
-    title: `Order #${order?.id}`,
+    title: t('title', { orderName: orderDisplayName }),
+    description: t('description', { orderName: orderDisplayName }),
+    keywords: [
+      'order details',
+      'order view',
+      'order information',
+      'order status',
+      'order items',
+      'customer order',
+    ],
+    openGraph: {
+      title: t('title', { orderName: orderDisplayName }),
+      description: t('description', { orderName: orderDisplayName }),
+      type: 'website',
+    },
+    robots: {
+      index: false,
+      follow: false,
+      nocache: true,
+    },
   };
 }
 

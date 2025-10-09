@@ -12,11 +12,31 @@ import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 
 export async function generateMetadata(): Promise<Metadata> {
-  // const t = await getTranslations();
+  const t = await getTranslations('menu.metadata');
 
   return {
-    title: 'Menu',
-    description: '',
+    title: t('title'),
+    description: t('description'),
+    keywords: [
+      'menu management',
+      'cafe menu',
+      'menu items',
+      'food menu',
+      'beverage menu',
+      'menu editor',
+      'product management',
+      'pricing',
+    ],
+    openGraph: {
+      title: t('title'),
+      description: t('description'),
+      type: 'website',
+    },
+    robots: {
+      index: false,
+      follow: false,
+      nocache: true,
+    },
   };
 }
 

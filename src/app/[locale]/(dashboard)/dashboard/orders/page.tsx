@@ -13,9 +13,29 @@ import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 
 export async function generateMetadata(): Promise<Metadata> {
-  // const t = await getTranslations();
+  const t = await getTranslations('orders.metadata');
+
   return {
-    title: 'Orders',
+    title: t('title'),
+    description: t('description'),
+    keywords: [
+      'orders management',
+      'cafe orders',
+      'order tracking',
+      'order history',
+      'order status',
+      'customer orders',
+    ],
+    openGraph: {
+      title: t('title'),
+      description: t('description'),
+      type: 'website',
+    },
+    robots: {
+      index: false,
+      follow: false,
+      nocache: true,
+    },
   };
 }
 

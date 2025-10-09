@@ -16,10 +16,33 @@ import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 
 export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations('analytics');
+  const t = await getTranslations('analytics.metadata');
+
   return {
-    title: t('page.title'),
-    description: t('page.description'),
+    title: t('title'),
+    description: t('description'),
+    keywords: [
+      'analytics',
+      'sales analytics',
+      'cafe analytics',
+      'business insights',
+      'sales reports',
+      'revenue tracking',
+      'performance metrics',
+      'dashboard analytics',
+      'order statistics',
+      'sales trends',
+    ],
+    openGraph: {
+      title: t('title'),
+      description: t('description'),
+      type: 'website',
+    },
+    robots: {
+      index: false,
+      follow: false,
+      nocache: true,
+    },
   };
 }
 

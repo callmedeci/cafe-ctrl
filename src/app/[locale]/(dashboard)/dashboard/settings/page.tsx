@@ -4,9 +4,29 @@ import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 
 export async function generateMetadata(): Promise<Metadata> {
-  // const t = await getTranslations();
+  const t = await getTranslations('settings.metadata');
+
   return {
-    title: 'Settings',
+    title: t('title'),
+    description: t('description'),
+    keywords: [
+      'cafe settings',
+      'dashboard configuration',
+      'language settings',
+      'theme settings',
+      'account management',
+      'preferences',
+    ],
+    openGraph: {
+      title: t('title'),
+      description: t('description'),
+      type: 'website',
+    },
+    robots: {
+      index: false,
+      follow: false,
+      nocache: true,
+    },
   };
 }
 
