@@ -9,25 +9,26 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 import { Plus } from 'lucide-react';
-import { useState } from 'react';
-import CreateOrderForm from '../form/CreateOrderForm';
-import { parseAsString, useQueryStates } from 'nuqs';
 import { useTranslations } from 'next-intl';
+import { useState } from 'react';
+import { useMenuItemSearch } from '../../hooks/useMenuItemSearch';
+import CreateOrderForm from '../form/CreateOrderForm';
 
 function CreateOrderDialog() {
   const t = useTranslations('orders');
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [, setParam] = useQueryStates({
-    menu_item_filter: parseAsString,
-    menu_item_query: parseAsString,
-  });
+  const { setFilterBy, setQuery } = useMenuItemSearch();
 
   return (
     <Dialog
       open={isOpen}
       onOpenChange={() => {
-        setParam(null);
         setIsOpen(false);
+
+        setTimeout(() => {
+          setFilterBy([]);
+          setQuery('');
+        }, 10);
       }}
     >
       <Button

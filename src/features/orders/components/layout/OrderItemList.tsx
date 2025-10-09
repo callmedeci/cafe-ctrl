@@ -6,14 +6,13 @@ import { Small } from '@/components/typography/Small';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { useFiltersQuery } from '@/hooks/useFiltersQuery';
 import { cn } from '@/lib/utils';
 import { MenuRow } from '@/types/tables';
 import { Minus, Plus } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
-import { parseAsString, useQueryState } from 'nuqs';
 import { ControllerRenderProps } from 'react-hook-form';
 import { useGetMenu } from '../../hooks/useGetMenu';
+import { useMenuItemSearch } from '../../hooks/useMenuItemSearch';
 import { OrderItem } from '../../lib/types';
 import MenuItemsSelectorError from '../error/MenuItemsSelectorError';
 import MenuItemsSelectorSkeleton from '../skeletons/MenuItemsSelectorSkeleton';
@@ -23,21 +22,17 @@ type OrderItemListProps = { field: ControllerRenderProps };
 function OrderItemList({ field }: OrderItemListProps) {
   const t = useTranslations('orders');
   const locale = useLocale();
-  const { filters } = useFiltersQuery('menu_item_filter');
   const { menu, isPending, error } = useGetMenu();
 
-  const [query] = useQueryState(
-    'menu_item_query',
-    parseAsString.withDefault(''),
-  );
+  const { query, filterBy } = useMenuItemSearch();
 
   if (error) return <MenuItemsSelectorError />;
   if (isPending || !menu) return <MenuItemsSelectorSkeleton />;
 
   const filteredItems = menu.filter((item) => {
-    if (filters.length === 0) return true;
+    if (filterBy.length === 0) return true;
 
-    return filters.some(
+    return filterBy.some(
       (filter) => item.category?.toLowerCase() === filter.toLowerCase(),
     );
   });
