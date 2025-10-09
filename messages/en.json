@@ -126,6 +126,10 @@
     }
   },
   "orders": {
+    "metadata": {
+      "title": "Orders",
+      "description": "View and manage all cafe orders, track order status, and handle customer requests in real-time"
+    },
     "page": {
       "title": "Manage Orders",
       "description": "Track, manage, and process customer orders efficiently."
@@ -233,6 +237,10 @@
       "additionalDetails": "Additional Details"
     },
     "view": {
+      "metadata": {
+        "title": "Order {orderName}",
+        "description": "View detailed information for order {orderName}, including items, status, customer details, and order notes"
+      },
       "title": "Order {orderName}",
       "description": "View and manage order details, items, and customer information.",
       "goBack": "Go Back",
@@ -325,6 +333,10 @@
     }
   },
   "menu": {
+    "metadata": {
+      "title": "Menu",
+      "description": "Manage your cafe menu items, update prices, add new products, and organize categories to keep your offerings up to date"
+    },
     "page": {
       "title": "Manage Your Menu",
       "description": "Create, organize, and manage your menu items in one place."
@@ -552,6 +564,10 @@
     }
   },
   "settings": {
+    "metadata": {
+      "title": "Settings",
+      "description": "Customize your dashboard preferences, language, theme, and account settings"
+    },
     "page": {
       "title": "Settings",
       "description": "Customize your dashboard preferences and manage additional charges."
@@ -732,9 +748,13 @@
     }
   },
   "analytics": {
+    "metadata": {
+      "title": "Analytics",
+      "description": "Track your cafe's performance with comprehensive analytics including sales trends, order statistics, revenue insights, and top-selling items"
+    },
     "page": {
-      "title": "Analytics Dashboard",
-      "description": "Track your performance with comprehensive analytics."
+      "title": "Analytics",
+      "description": "View your business insights and performance metrics"
     },
     "periods": {
       "7d": "7 Days",
@@ -772,23 +792,23 @@
     "stats": {
       "totalRevenue": {
         "title": "Total Revenue",
-        "description": "from {period}"
+        "description": "from the last {period}"
       },
       "totalOrders": {
         "title": "Total Orders",
-        "description": "from {period}"
+        "description": "orders from the last {period}"
       },
       "menuItems": {
         "title": "Menu Items",
-        "description": "active items"
+        "description": "active on the menu"
       },
       "averageOrder": {
         "title": "Average Order",
-        "description": "your average income on each order"
+        "description": "per order in the last {period}"
       },
       "totalSales": {
         "title": "Total Sales",
-        "description": "total revenue from menu items"
+        "description": "sales from the last {period}"
       }
     },
     "dialog": {
@@ -820,6 +840,23 @@
     },
     "loading": {
       "loadingData": "Loading analytics data..."
+    }
+  },
+  "metadata": {
+    "title": {
+      "default": "CafeCtrl - Smart Cafe Management",
+      "template": "%s | CafeCtrl"
+    },
+    "description": "Streamline your cafe operations with CafeCtrl's comprehensive management dashboard. Handle orders, manage menus, and track analytics efficiently.",
+    "keywords": "cafe management, restaurant pos, order management, menu management, cafe analytics, cafe dashboard",
+    "og": {
+      "title": "CafeCtrl - Intelligent Cafe Management Solution",
+      "description": "Take control of your cafe operations with our intuitive management platform. Streamline orders, menus and get valuable insights.",
+      "imageAlt": "CafeCtrl Dashboard Preview"
+    },
+    "twitter": {
+      "title": "CafeCtrl - Smart Cafe Management Platform",
+      "description": "The all-in-one solution for modern cafe management. Boost efficiency and grow your business."
     }
   }
 }
