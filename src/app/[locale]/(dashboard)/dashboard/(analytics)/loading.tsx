@@ -1,3 +1,4 @@
+import LayoutHeaderSkeleton from '@/components/shared/LayoutHeaderSkeleton';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 
@@ -6,14 +7,9 @@ function DashboardLoading() {
     <div role='status' aria-busy='true' className='flex flex-col'>
       <span className='sr-only'>Loading analytics dashboard...</span>
 
-      {/* Header */}
-      <header className='bg-sidebar/95 flex flex-col gap-2 border-b px-4 py-[17.2px] backdrop-blur sm:flex-row sm:items-center sm:justify-between'>
-        <div className='space-y-2'>
-          <Skeleton className='h-7 w-56' aria-hidden='true' />
-          <Skeleton className='h-4 w-80' aria-hidden='true' />
-        </div>
+      <LayoutHeaderSkeleton>
         <Skeleton className='h-9 w-32' aria-hidden='true' />
-      </header>
+      </LayoutHeaderSkeleton>
 
       <div className='flex flex-col gap-4 p-4'>
         {/* Quick Stats Cards */}

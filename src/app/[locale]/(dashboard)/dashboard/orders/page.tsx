@@ -40,7 +40,7 @@ async function OrdersPage({
             <CardDescription>{t('table.description')}</CardDescription>
 
             <OrdersActions />
-            <FiltersList filterName='menu_item_filter' />
+            <FiltersList />
           </CardHeader>
 
           <CardContent>

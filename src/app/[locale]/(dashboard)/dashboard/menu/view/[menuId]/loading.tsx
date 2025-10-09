@@ -1,3 +1,4 @@
+import LayoutHeaderSkeleton from '@/components/shared/LayoutHeaderSkeleton';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 
@@ -6,18 +7,7 @@ function MenuItemViewLoading() {
     <div role='status' aria-busy='true' className='flex flex-col'>
       <span className='sr-only'>Loading menu item details...</span>
 
-      {/* Header */}
-      <header className='bg-sidebar/95 flex flex-col gap-2 border-b px-4 py-[17.2px] backdrop-blur sm:flex-row sm:items-center sm:justify-between'>
-        <div className='space-y-2'>
-          <Skeleton className='h-6 w-48 sm:w-56' aria-hidden='true' />
-          <Skeleton className='h-4 w-64 sm:w-80' aria-hidden='true' />
-        </div>
-
-        <div className='flex items-center gap-2'>
-          <Skeleton className='h-8 w-16 sm:w-20' aria-hidden='true' />
-          <Skeleton className='h-7 w-7' aria-hidden='true' />
-        </div>
-      </header>
+      <LayoutHeaderSkeleton backButton={true} />
 
       <div className='flex flex-col gap-4 p-4'>
         <Card>
