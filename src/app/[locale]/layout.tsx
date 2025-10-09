@@ -74,12 +74,12 @@ export async function generateMetadata(): Promise<Metadata> {
 const vazirmatnFD = localFont({
   src: [
     {
-      path: '../../public/fonts/Vazirmatn-FD-Regular.woff2',
+      path: '../../../public/fonts/Vazirmatn-FD-Regular.woff2',
       weight: '400',
       style: 'normal',
     },
     {
-      path: '../../public/fonts/Vazirmatn-FD-SemiBold.woff2',
+      path: '../../../public/fonts/Vazirmatn-FD-SemiBold.woff2',
       weight: '500',
       style: 'normal',
     },
