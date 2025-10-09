@@ -757,7 +757,7 @@
         "label": "Orders"
       },
       "topSales": {
-        "title": "Top 5 Menu Items",
+        "title": "Top 7 Menu Items",
         "description": "Best performing items for {period}"
       }
     },
