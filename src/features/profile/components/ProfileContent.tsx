@@ -1,21 +1,20 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
 import ErrorState from '@/components/shared/ErrorState';
-import { getUser } from '@/supabase/data/user-service';
+import { Card, CardContent } from '@/components/ui/card';
+import {
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+} from '@/components/ui/sheet';
+import { User } from '@supabase/supabase-js';
 import { getTranslations } from 'next-intl/server';
 import ChangePasswordForm from './ChangePasswordForm';
 import ProfileForm from './ProfileForm';
 
-async function ProfileContent() {
+async function ProfileContent({ user }: { user: User }) {
   const t = await getTranslations('profile');
-  const user = await getUser();
 
-  if (!user) {
+  if (!user)
     return (
       <div className='flex flex-col gap-4'>
         <Card>
@@ -28,30 +27,19 @@ async function ProfileContent() {
         </Card>
       </div>
     );
-  }
 
   return (
-    <>
-      <Card>
-        <CardHeader>
-          <CardTitle>{t('personalInfo.title')}</CardTitle>
-          <CardDescription>{t('personalInfo.description')}</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <ProfileForm user={user} />
-        </CardContent>
-      </Card>
+    <SheetContent side='left'>
+      <SheetHeader>
+        <SheetTitle>{t('personalInfo.title')}</SheetTitle>
+        <SheetDescription>{t('personalInfo.description')}</SheetDescription>
+      </SheetHeader>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>{t('changePassword.title')}</CardTitle>
-          <CardDescription>{t('changePassword.description')}</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <ChangePasswordForm />
-        </CardContent>
-      </Card>
-    </>
+      <div className='grid flex-1 auto-rows-min gap-6 px-4'>
+        <ProfileForm user={user} />
+        <ChangePasswordForm />
+      </div>
+    </SheetContent>
   );
 }
 

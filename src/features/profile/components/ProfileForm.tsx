@@ -2,7 +2,7 @@
 
 import SubmitButton from '@/components/shared/SubmitButton';
 import UploadImage from '@/components/shared/UploadImage';
-import { H3 } from '@/components/typography/H3';
+import { H4 } from '@/components/typography/H4';
 import { P } from '@/components/typography/P';
 import { Badge } from '@/components/ui/badge';
 import {
@@ -84,7 +84,7 @@ function ProfileForm({ user }: ProfileFormProps) {
           render={({ field, fieldState: { error } }) => (
             <FormItem>
               <FormControl>
-                <div className='flex flex-col items-center gap-2 text-center sm:flex-row sm:text-left'>
+                <div className='flex flex-col items-center justify-center gap-1'>
                   <UploadImage
                     avatarFallback={avatarFallBack}
                     isAvatar={true}
@@ -93,42 +93,34 @@ function ProfileForm({ user }: ProfileFormProps) {
                     defaultImageURL={user.user_metadata?.picture}
                   />
 
-                  <div className='flex flex-col gap-2'>
-                    <div
-                      className={`flex flex-col ${locale === 'fa' ? 'items-start' : ''}`}
-                    >
-                      <H3 className='capitalize'>
-                        {user.user_metadata.full_name}
-                      </H3>
-                      <div className='flex items-center gap-1'>
-                        <Mail className='text-muted-foreground h-4 w-4' />
-                        <P>{user.email}</P>
-                      </div>
-                    </div>
+                  <H4 className='capitalize'>{user.user_metadata.full_name}</H4>
+                  <div className='flex items-center gap-1'>
+                    <Mail className='text-muted-foreground h-4 w-4' />
+                    <P>{user.email}</P>
+                  </div>
 
-                    <div className='flex flex-wrap gap-2'>
-                      <Badge variant='secondary'>
-                        {user.user_metadata.email_verified ? (
-                          <ShieldCheck />
-                        ) : (
-                          <ShieldX />
-                        )}
+                  <div className='flex flex-wrap gap-2'>
+                    <Badge variant='secondary'>
+                      {user.user_metadata.email_verified ? (
+                        <ShieldCheck />
+                      ) : (
+                        <ShieldX />
+                      )}
 
-                        {user.email_confirmed_at
-                          ? t('status.verified')
-                          : t('status.unverified')}
-                      </Badge>
+                      {user.email_confirmed_at
+                        ? t('status.verified')
+                        : t('status.unverified')}
+                    </Badge>
 
-                      <Badge variant='outline'>
-                        <Calendar />
-                        {t('status.joined', {
-                          date: dateForamt.format(
-                            new Date(user.created_at),
-                            'MMMM yyyy',
-                          ),
-                        })}
-                      </Badge>
-                    </div>
+                    <Badge variant='outline'>
+                      <Calendar />
+                      {t('status.joined', {
+                        date: dateForamt.format(
+                          new Date(user.created_at),
+                          'MMMM yyyy',
+                        ),
+                      })}
+                    </Badge>
                   </div>
                 </div>
               </FormControl>
@@ -174,7 +166,7 @@ function ProfileForm({ user }: ProfileFormProps) {
           />
         </div>
 
-        <div className='flex w-full flex-col gap-2 md:flex-row md:items-end'>
+        <div className='flex w-full flex-col gap-2'>
           {/* Phone Field */}
           <FormField
             name='phone'
