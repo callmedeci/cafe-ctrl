@@ -12,6 +12,7 @@ import { OrderRow } from '@/types/tables';
 import { cloneElement, ReactElement, useState } from 'react';
 import EditOrderForm from '../form/EditOrderForm';
 import { useTranslations } from 'next-intl';
+import { useMenuItemSearch } from '../../hooks/useMenuItemSearch';
 
 type EditOrderProps = {
   order: OrderRow;
@@ -21,9 +22,20 @@ type EditOrderProps = {
 function EditOrderDialog({ order, children }: EditOrderProps) {
   const t = useTranslations('orders');
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const { setFilterBy, setQuery } = useMenuItemSearch();
 
   return (
-    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+    <Dialog
+      open={isOpen}
+      onOpenChange={() => {
+        setIsOpen(false);
+
+        setTimeout(() => {
+          setFilterBy([]);
+          setQuery('');
+        }, 10);
+      }}
+    >
       <DialogTrigger asChild>
         {cloneElement(children, {
           onClick: (e) => {

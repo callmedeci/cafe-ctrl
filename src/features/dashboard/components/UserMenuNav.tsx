@@ -13,7 +13,7 @@ function UserMenuNav() {
 
   return (
     <>
-      <SheetTrigger asChild onClick={() => setOpenMobile(false)}>
+      <SheetTrigger asChild>
         <DropdownMenuItem>
           <User2 />
           {t('userMenu.profile')}

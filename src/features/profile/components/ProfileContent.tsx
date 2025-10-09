@@ -7,12 +7,13 @@ import {
   SheetTitle,
 } from '@/components/ui/sheet';
 import { User } from '@supabase/supabase-js';
-import { getTranslations } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
 import ChangePasswordForm from './ChangePasswordForm';
 import ProfileForm from './ProfileForm';
 
 async function ProfileContent({ user }: { user: User }) {
   const t = await getTranslations('profile');
+  const locale = await getLocale();
 
   if (!user)
     return (
@@ -29,7 +30,7 @@ async function ProfileContent({ user }: { user: User }) {
     );
 
   return (
-    <SheetContent side='left'>
+    <SheetContent side={locale === 'fa' ? 'left' : 'right'}>
       <SheetHeader>
         <SheetTitle>{t('personalInfo.title')}</SheetTitle>
         <SheetDescription>{t('personalInfo.description')}</SheetDescription>
