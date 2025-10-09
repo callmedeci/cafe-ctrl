@@ -4,7 +4,7 @@ import { useFiltersQuery } from '@/hooks/useFiltersQuery';
 import { CommandEmpty } from 'cmdk';
 import { Check, ListFilter as Filter, Inbox } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { useState } from 'react';
+import { startTransition, useState } from 'react';
 import { Button } from '../ui/button';
 import {
   Command,
@@ -23,19 +23,28 @@ type FilterByProps = {
     iconName?: string;
   }[];
   filterName?: string;
+  value?: string[];
+  onChange?: (updatedFilters: string[]) => void;
 };
 
-function FilterBy({ options, filterName }: FilterByProps) {
+function FilterBy({ options, filterName, value, onChange }: FilterByProps) {
   const t = useTranslations('components');
-  const { filters, setFilter } = useFiltersQuery(filterName);
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const { filters: urlFilters, setFilter } = useFiltersQuery(filterName);
 
-  function handleUpdateFilter(value: string) {
-    if (filters.includes(value.toLowerCase()))
-      setFilter(filters.filter((filter) => filter !== value.toLowerCase()));
-    else setFilter([...new Set([...filters, value.toLowerCase()])]);
+  const filters = value ?? urlFilters;
+  const isControlled = value !== undefined;
 
-    setTimeout(() => setIsOpen(false), 10);
+  function handleUpdateFilter(filterValue: string) {
+    const normalizedValue = filterValue.toLowerCase();
+    const updatedFilters = filters.includes(normalizedValue)
+      ? filters.filter((filter) => filter !== normalizedValue)
+      : [...new Set([...filters, normalizedValue])];
+
+    if (isControlled && onChange) onChange(updatedFilters);
+    else setFilter(updatedFilters);
+
+    startTransition(() => setIsOpen(false));
   }
 
   return (

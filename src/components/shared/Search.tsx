@@ -8,16 +8,24 @@ import { Input } from '../ui/input';
 import { useLocale } from 'next-intl';
 import { useTranslations } from 'next-intl';
 
+type SearchProps = ComponentProps<'input'> & {
+  onClear?: () => void;
+};
+
 function Search({
   placeholder,
-  name = 'query',
   className,
+  onClear,
+  value,
+  name = 'query',
   ...props
-}: ComponentProps<'input'>) {
+}: SearchProps) {
+  const [query, setQuery] = useQueryState(name, parseAsString.withDefault(''));
+
   const t = useTranslations('components');
   const ref = useRef<HTMLInputElement | null>(null);
-  const [query, setQuery] = useQueryState(name, parseAsString.withDefault(''));
   const locale = useLocale();
+
   const isFa = locale === 'fa';
 
   const searchPlaceholder = placeholder || t('search.placeholder');
@@ -53,11 +61,13 @@ function Search({
         />
       </div>
 
-      {query && (
+      {(query || value) && (
         <X
           onClick={() => {
+            if (onClear) onClear();
+            else setQuery(null);
+
             if (ref.current) ref.current.value = '';
-            setQuery(null);
           }}
           className={cn(
             'hover:text-destructive absolute size-4 transition-colors duration-200 hover:cursor-pointer',

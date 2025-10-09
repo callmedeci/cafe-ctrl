@@ -4,16 +4,25 @@ import { Badge } from '@/components/ui/badge';
 import { X } from 'lucide-react';
 import { useFiltersQuery } from '../../hooks/useFiltersQuery';
 
-type FiltersListProps = { filterName?: string };
+type FiltersListProps = {
+  filterName?: string;
+  value?: string[];
+  onChange?: (updatedFilters: string[]) => void;
+};
 
-function FiltersList({ filterName }: FiltersListProps) {
-  const { filters, setFilter } = useFiltersQuery(filterName);
+function FiltersList({ filterName, value, onChange }: FiltersListProps) {
+  const { filters: urlFilters, setFilter } = useFiltersQuery(filterName);
+
+  const filters = value ?? urlFilters;
+  const isControlled = value !== undefined;
 
   if (!(filters.length > 0)) return null;
 
-  function handleRemoveFilter(value: string) {
-    if (!(filters.length > 0)) setFilter([]);
-    setFilter(filters.filter((f) => f !== value));
+  function handleRemoveFilter(filterValue: string) {
+    const updatedFilters = filters.filter((f) => f !== filterValue);
+
+    if (isControlled && onChange) onChange(updatedFilters);
+    else setFilter(updatedFilters);
   }
 
   return (

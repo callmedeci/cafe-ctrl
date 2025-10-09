@@ -9,7 +9,34 @@ import { useTranslations } from 'next-intl';
 
 type MenuItemsFilterProps = {
   filterName?: string;
+  value?: string[];
+  onChange?: (value: string[]) => void;
 };
+
+function MenuItemsFilter({
+  filterName,
+  value,
+  onChange,
+}: MenuItemsFilterProps) {
+  const {
+    categories,
+    isPending: categoriesPending,
+    error: categoriesError,
+  } = useGetSelectedMenuCategories();
+
+  // ---> MUST CHANGE <---
+  if (categoriesError) return null;
+  if (categoriesPending || !categories) return <MenuItemsFilterSkeleton />;
+
+  return (
+    <FilterBy
+      options={menuFilterOptions(categories)}
+      filterName={filterName}
+      onChange={onChange}
+      value={value}
+    />
+  );
+}
 
 function MenuItemsFilterSkeleton() {
   const t = useTranslations('components');
@@ -26,22 +53,6 @@ function MenuItemsFilterSkeleton() {
         <span className='hidden sm:inline'>{t('filterBy.applyFilter')}</span>
       </Button>
     </div>
-  );
-}
-
-function MenuItemsFilter({ filterName }: MenuItemsFilterProps) {
-  const {
-    categories,
-    isPending: categoriesPending,
-    error: categoriesError,
-  } = useGetSelectedMenuCategories();
-
-  // ---> MUST CHANGE <---
-  if (categoriesError) return <p>Error!!!</p>;
-  if (categoriesPending || !categories) return <MenuItemsFilterSkeleton />;
-
-  return (
-    <FilterBy options={menuFilterOptions(categories)} filterName={filterName} />
   );
 }
 
