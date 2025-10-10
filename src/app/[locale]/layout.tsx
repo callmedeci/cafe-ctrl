@@ -105,22 +105,6 @@ export default async function RootLayout({
     <html lang={locale} dir={isFa ? 'rtl' : 'ltr'} suppressHydrationWarning>
       <head>
         <meta name='apple-mobile-web-app-title' content='CafeCtrl' />
-        <link rel='manifest' href='/manifest.json' />
-        <link rel='apple-touch-icon' href='/apple-icon.png' />
-        <link rel='icon' href='/favicon.ico' />
-        <link rel='alternate icon' href='/icon0.svg' />
-        <link
-          rel='icon'
-          type='image/png'
-          sizes='192x192'
-          href='/web-app-manifest-192x192.png'
-        />
-        <link
-          rel='icon'
-          type='image/png'
-          sizes='512x512'
-          href='/web-app-manifest-512x512.png'
-        />
       </head>
       <body
         className={cn(

@@ -1,13 +1,15 @@
-import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Brain, FileText } from 'lucide-react';
+import { FileText } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 import { Suspense } from 'react';
 import MenuItemDetailsDescription from '../content/MenuItemDetailsDescription';
+import GenerateDescriptionButton from '../layout/GenerateDescriptionButton';
 import MenuItemDetailsDescriptionSkeleton from '../skeletons/MenuItemDetailsDescriptionSkeleton';
+import { searchParamsCache } from '@/lib/utils';
 
 async function MenuItemDescriptonCard() {
   const t = await getTranslations('menu');
+  const { menuId } = searchParamsCache.all();
 
   return (
     <Card className='flex-1'>
@@ -17,15 +19,12 @@ async function MenuItemDescriptonCard() {
           {t('cards.description.title')}
         </CardTitle>
       </CardHeader>
-      <CardContent>
+      <CardContent className='flex h-full flex-col justify-between gap-2'>
         <Suspense fallback={<MenuItemDetailsDescriptionSkeleton />}>
           <MenuItemDetailsDescription />
         </Suspense>
 
-        <Button size='sm' variant='outline' className='mt-4'>
-          <Brain />
-          {t('cards.description.generateAI')}
-        </Button>
+        <GenerateDescriptionButton menuId={menuId} />
       </CardContent>
     </Card>
   );

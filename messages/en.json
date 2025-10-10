@@ -453,6 +453,9 @@
       "description": {
         "title": "Description",
         "generateAI": "Generate with AI",
+        "generating": "Generating...",
+        "generateSuccess": "Description generated and saved successfully",
+        "generateError": "Failed to generate description",
         "placeholder": "Temporary description showcases how your menu item details will appear. Please update with your actual menu item description for a genuine representation of your dish :)"
       },
       "image": {

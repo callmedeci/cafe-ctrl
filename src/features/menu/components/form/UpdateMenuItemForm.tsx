@@ -34,6 +34,7 @@ import {
   updateMenuItemSchema,
   UpdateMenuItemSchema,
 } from '../../schema/schema';
+import GenerateDescriptionButton from '../layout/GenerateDescriptionButton';
 import CategorySelect from '../selects/CategorySelect';
 import IngredientsList from '../selects/IngredientsList';
 import CreateIngredientsForm from './CreateIngredientsForm';
@@ -218,17 +219,24 @@ function UpdateMenuItemForm({
                       <Small>{charLength}/280</Small>
                     </FormLabel>
                     <FormControl>
-                      <Textarea
-                        maxLength={280}
-                        className='max-h-28 text-xs md:text-sm'
-                        autoComplete='on'
-                        placeholder={t('form.fields.descriptionPlaceholder')}
-                        {...field}
-                        onChange={(e) => {
-                          setCharLength(e.target.value.length);
-                          field.onChange(e.target.value);
-                        }}
-                      />
+                      <div className='relative h-24 max-h-28'>
+                        <Textarea
+                          maxLength={280}
+                          className='h-full text-xs md:text-sm'
+                          autoComplete='on'
+                          placeholder={t('form.fields.descriptionPlaceholder')}
+                          {...field}
+                          onChange={(e) => {
+                            setCharLength(e.target.value.length);
+                            field.onChange(e.target.value);
+                          }}
+                        />
+                        <GenerateDescriptionButton
+                          menuId={menuToUpdate.id}
+                          menuItem={menuToUpdate}
+                          className='absolute right-2 bottom-2 z-50'
+                        />
+                      </div>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
