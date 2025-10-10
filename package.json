@@ -101,6 +101,9 @@
   "overrides": {
     "@genkit-ai/next": {
       "zod": "^4.1.5"
+    },
+    "tozod": {
+      "zod": "^4.1.5"
     }
   }
 }
