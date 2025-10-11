@@ -781,7 +781,8 @@
       },
       "topSales": {
         "title": "7 قلم برتر منو",
-        "description": "بهترین اقلام عملکرد برای {period}"
+        "description": "بهترین اقلام عملکرد برای {period}",
+        "sold": "فروش"
       }
     },
     "cards": {
@@ -843,6 +844,110 @@
     },
     "loading": {
       "loadingData": "در حال بارگذاری داده‌های تحلیلی..."
+    }
+  },
+  "reports": {
+    "metadata": {
+      "title": "گزارش‌ها",
+      "description": "تولید گزارش‌های جامع با تحلیل‌های مقایسه‌ای، تجسم داده‌ها و قابلیت‌های صادرات برای کسب‌وکار کافه شما"
+    },
+    "page": {
+      "title": "گزارش‌ها",
+      "description": "تولید گزارش‌های تفصیلی و صادرات داده‌های کسب‌وکار خود"
+    },
+    "filters": {
+      "reportType": "نوع گزارش",
+      "selectReportType": "انتخاب نوع گزارش",
+      "dateRange": "بازه زمانی",
+      "selectDateRange": "انتخاب بازه زمانی",
+      "from": "از",
+      "to": "تا",
+      "apply": "اعمال"
+    },
+    "reportTypes": {
+      "sales": "گزارش فروش",
+      "orders": "گزارش سفارش‌ها",
+      "menu-performance": "گزارش عملکرد منو"
+    },
+    "cards": {
+      "filters": {
+        "title": "فیلترهای گزارش",
+        "description": "انتخاب نوع گزارش و بازه زمانی"
+      },
+      "metrics": {
+        "title": "معیارهای مقایسه‌ای",
+        "description": "مقایسه عملکرد دوره به دوره"
+      },
+      "chart": {
+        "title": "تحلیل روند",
+        "description": "نمایش بصری روندهای عملکرد",
+        "noData": "داده‌ای برای دوره انتخاب شده موجود نیست"
+      },
+      "table": {
+        "title": "داده‌های تفصیلی",
+        "description": "اقلام برتر با تحلیل مقایسه‌ای",
+        "noData": "داده تفصیلی برای این نوع گزارش موجود نیست"
+      },
+      "insights": {
+        "title": "بینش‌های کلیدی",
+        "description": "تحلیل هوشمند روندهای عملکرد شما"
+      },
+      "export": {
+        "title": "صادرات گزارش",
+        "description": "دانلود گزارش خود در فرمت‌های مختلف"
+      }
+    },
+    "chart": {
+      "current": "دوره فعلی",
+      "previous": "دوره قبلی"
+    },
+    "table": {
+      "headers": {
+        "item": "قلم",
+        "current": "دوره فعلی",
+        "previous": "دوره قبلی",
+        "change": "تغییر"
+      }
+    },
+    "insights": {
+      "strongGrowth": {
+        "title": "رشد قوی شناسایی شد",
+        "description": "{metric} نسبت به دوره قبل {percent}٪ افزایش یافت"
+      },
+      "decline": {
+        "title": "نیاز به توجه",
+        "description": "{metric} نسبت به دوره قبل {percent}٪ کاهش یافت"
+      },
+      "stable": {
+        "title": "عملکرد پایدار",
+        "description": "{metric} با تغییر حداقلی نسبتاً پایدار باقی می‌ماند"
+      },
+      "improvement": {
+        "title": "روند مثبت",
+        "description": "{metric} {direction} {percent}٪"
+      },
+      "attention": {
+        "title": "نظارت دقیق",
+        "description": "{metric} {direction} {percent}٪"
+      },
+      "metricChange": {
+        "description": "{metric} {direction} {percent}٪"
+      },
+      "increased": "افزایش یافت",
+      "decreased": "کاهش یافت",
+      "noData": {
+        "title": "بینشی موجود نیست",
+        "description": "با انتخاب بازه زمانی با داده، بینش‌ها را تولید کنید"
+      }
+    },
+    "export": {
+      "pdf": "صادرات به PDF",
+      "csv": "صادرات به CSV",
+      "xlsx": "صادرات به Excel",
+      "placeholder": "صادرات به {format} - قابلیت به زودی"
+    },
+    "errors": {
+      "failedToLoad": "بارگذاری داده‌های گزارش ناموفق بود"
     }
   },
   "metadata": {

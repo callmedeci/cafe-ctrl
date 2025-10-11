@@ -781,7 +781,8 @@
       },
       "topSales": {
         "title": "Top 7 Menu Items",
-        "description": "Best performing items for {period}"
+        "description": "Best performing items for {period}",
+        "sold": "sold"
       }
     },
     "cards": {
