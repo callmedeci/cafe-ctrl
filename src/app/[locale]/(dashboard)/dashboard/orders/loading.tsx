@@ -1,3 +1,4 @@
+import LayoutHeaderSkeleton from '@/components/shared/LayoutHeaderSkeleton';
 import {
   Card,
   CardContent,
@@ -13,13 +14,7 @@ function OrdersLoading() {
     <div role='status' aria-busy='true' className='flex flex-col'>
       <span className='sr-only'>Loading orders...</span>
 
-      <header className='bg-sidebar/95 flex flex-col gap-2 border-b px-4 py-[17.2px] backdrop-blur sm:flex-row sm:items-center sm:justify-between'>
-        <div className='space-y-2'>
-          <Skeleton className='h-7 w-32' aria-hidden='true' />
-          <Skeleton className='h-4 w-80' aria-hidden='true' />
-        </div>
-        <Skeleton className='h-7 w-7 sm:self-start' aria-hidden='true' />
-      </header>
+      <LayoutHeaderSkeleton />
 
       <div className='flex gap-4 p-4'>
         <ScrollArea type='always' className='w-1 flex-1'>

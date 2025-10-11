@@ -1,4 +1,4 @@
-import ReactQueryProvider from '@/components/providers/ReactQueryClientProvider';
+import { ReactQueryProvider } from '@/components/providers/ReactQueryClientProvider';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 import { SidebarProvider } from '@/components/ui/sidebar';
 import { DashboardSidebar } from '@/features/dashboard';

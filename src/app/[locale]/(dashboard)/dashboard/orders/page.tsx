@@ -9,6 +9,12 @@ import {
 } from '@/components/ui/card';
 import { OrdersActions, OrdersTable } from '@/features/orders';
 import { searchParamsCache } from '@/lib/utils';
+import { getActiveCharges } from '@/supabase/data/charges-service';
+import {
+  dehydrate,
+  HydrationBoundary,
+  QueryClient,
+} from '@tanstack/react-query';
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 
@@ -46,6 +52,12 @@ async function OrdersPage({
   const params = await searchParams;
   searchParamsCache.parse(params);
 
+  const queryClient = new QueryClient();
+  await queryClient.prefetchQuery({
+    queryKey: ['active_charges'],
+    queryFn: getActiveCharges,
+  });
+
   return (
     <>
       <LayoutHeader
@@ -64,7 +76,9 @@ async function OrdersPage({
           </CardHeader>
 
           <CardContent>
-            <OrdersTable />
+            <HydrationBoundary state={dehydrate(queryClient)}>
+              <OrdersTable />
+            </HydrationBoundary>
           </CardContent>
         </Card>
       </div>

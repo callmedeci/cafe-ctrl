@@ -1,6 +1,9 @@
+'use client';
+
 import { cn } from '@/lib/utils';
 import { Skeleton } from '../ui/skeleton';
 import { ReactNode } from 'react';
+import { useLocale } from 'next-intl';
 
 type LayoutHeaderSkeleton = {
   className?: string;
@@ -13,14 +16,23 @@ function LayoutHeaderSkeleton({
   backButton = false,
   children,
 }: LayoutHeaderSkeleton) {
+  const locale = useLocale();
+  const isFa = locale === 'fa';
+
   return (
     <header
       className={cn(
-        'bg-sidebar/95 flex flex-col gap-2 border-b px-4 py-[15px] backdrop-blur sm:flex-row sm:items-center sm:justify-between',
+        'bg-sidebar/95 flex flex-col gap-2 border-b px-4 py-[15px] backdrop-blur sm:items-center sm:justify-between',
+        isFa ? 'sm:flex-row-reverse' : 'sm:flex-row',
         className,
       )}
     >
-      <div className='space-y-2'>
+      <div
+        className={cn(
+          'flex flex-col space-y-2',
+          isFa ? 'items-end' : 'items-start',
+        )}
+      >
         {/* title */}
         <Skeleton className='h-7 w-32' aria-hidden='true' />
 
