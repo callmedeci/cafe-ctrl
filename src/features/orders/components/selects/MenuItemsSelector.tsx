@@ -3,6 +3,7 @@ import { ControllerRenderProps } from 'react-hook-form';
 import MenuItemsControls from '../layout/MenuItemsControls';
 import OrderItemList from '../layout/OrderItemList';
 import OrderSummary from '../layout/OrderSummary';
+import { Suspense } from 'react';
 
 function MenuItemsSelector(field: ControllerRenderProps) {
   return (
@@ -14,7 +15,10 @@ function MenuItemsSelector(field: ControllerRenderProps) {
 
         <CardContent className='!p-1'>
           <OrderItemList field={field} />
-          <OrderSummary field={field} />
+          {/* ---> TODO: MUST CHANGE <--- */}
+          <Suspense fallback={null}>
+            <OrderSummary field={field} />
+          </Suspense>
         </CardContent>
       </Card>
     </div>

@@ -1,15 +1,15 @@
 import { Table, TableFooter } from '@/components/ui/table';
 import { Suspense } from 'react';
 
+import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
+import { searchParamsCache } from '@/lib/utils';
+import OrdersTableFooterSkeleton from '../skeletons/OrdersTableFooterSkeleton';
 import OrdersTableLoadingSkeleton from '../skeletons/OrdersTableLoadingSkeleton';
 import OrdersTableBody from './OrdersTableBody';
 import OrdersTableFooterContent from './OrdersTableFooterContent';
 import OrdersTableHeader from './OrdersTableHeader';
-import OrdersTableFooterSkeleton from '../skeletons/OrdersTableFooterSkeleton';
-import { searchParamsCache } from '@/lib/utils';
-import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 
-function OrdersTable() {
+async function OrdersTable() {
   const { selected_date } = searchParamsCache.all();
 
   return (

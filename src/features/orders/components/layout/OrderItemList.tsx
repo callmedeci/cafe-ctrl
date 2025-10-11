@@ -109,7 +109,7 @@ function OrderItemList({ field }: OrderItemListProps) {
                   {/* Actions */}
                   <div className='flex h-full items-center justify-center'>
                     {selectedItem ? (
-                      <div className='flex flex-col items-start gap-1 md:flex-row md:items-center md:gap-2'>
+                      <div className='flex flex-col items-end gap-1 md:flex-row md:items-center md:gap-2'>
                         {/* Quantity controls */}
                         <div className='flex items-center rounded-lg border'>
                           <Button

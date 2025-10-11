@@ -12,6 +12,7 @@ import {
 } from '@/types/tables';
 import { revalidatePath } from 'next/cache';
 import { createBuildTimeClient } from '../client';
+import { getActiveCharges } from './charges-service';
 
 //GET
 export async function getOrders(): Promise<GetActionResult<OrderRow[]>> {
@@ -397,6 +398,23 @@ export async function createOrder(
 ): Promise<GetActionResult<OrderRow>> {
   try {
     const supabase = await createClient();
+
+    const { data: activeCharges, error: chargesError } =
+      await getActiveCharges();
+
+    if (chargesError || !activeCharges)
+      return { success: false, error: chargesError };
+
+    const chargesPrice = activeCharges.reduce(
+      (total, charge) => total + charge.amount,
+      0,
+    );
+    const totalPrice =
+      newOrder.items!.reduce(
+        (total, item) => total + item.price * item.quantity,
+        0,
+      ) + chargesPrice;
+
     const { data: order, error: orderError } = await supabase
       .from('orders')
       .insert({
@@ -406,10 +424,7 @@ export async function createOrder(
           ? new Date(createdAt).toISOString()
           : new Date().toISOString(),
 
-        total_price: newOrder.items!.reduce(
-          (acc, item) => acc + item.price * item.quantity,
-          0,
-        ),
+        total_price: totalPrice,
       })
       .select()
       .single();

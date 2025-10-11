@@ -9,6 +9,7 @@ import {
 } from '@/types/tables';
 import { revalidatePath } from 'next/cache';
 
+// GET CHARGES
 export async function getCharges(): Promise<
   GetActionResult<AdditionalChargesRow[]>
 > {
@@ -16,7 +17,8 @@ export async function getCharges(): Promise<
     const supabase = await createClient();
     const { data: charges, error: chargesError } = await supabase
       .from('additional_charges')
-      .select('*');
+      .select('*')
+      .order('created_at', { ascending: false });
 
     if (chargesError)
       return {
@@ -34,6 +36,33 @@ export async function getCharges(): Promise<
   }
 }
 
+export async function getActiveCharges(): Promise<
+  GetActionResult<{ amount: AdditionalChargesRow['amount'] }[]>
+> {
+  try {
+    const supabase = await createClient();
+    const { data: charges, error: chargesError } = await supabase
+      .from('additional_charges')
+      .select('amount')
+      .eq('is_active', true);
+
+    if (chargesError)
+      return {
+        success: false,
+        error: chargesError.message,
+      };
+
+    return { success: true, data: charges };
+  } catch (error) {
+    return {
+      success: false,
+      error:
+        error instanceof Error ? error.message : 'An unexpected error occurred',
+    };
+  }
+}
+
+// CREATE
 export async function createCharge(
   newCharge: AdditionalChargesInsert,
 ): Promise<GetActionResult<AdditionalChargesRow>> {
@@ -62,6 +91,7 @@ export async function createCharge(
   }
 }
 
+// UPDATE
 export async function updateCharge(
   id: number,
   chargeTpUpdate: AdditionalChargesUpdate,
@@ -152,6 +182,7 @@ export async function toggleChargeIsActive(
   }
 }
 
+// DELETE CHARGES
 export async function deleteCharge(id: number): Promise<GetActionResult> {
   try {
     const supabase = await createClient();

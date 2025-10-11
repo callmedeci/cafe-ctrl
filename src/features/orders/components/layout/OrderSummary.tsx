@@ -1,40 +1,63 @@
 'use client';
 
 import CurrencyDisplay from '@/components/shared/CurrencyDisplay';
-import { Large } from '@/components/typography/Large';
+import { P } from '@/components/typography/P';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 import { X } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { ControllerRenderProps } from 'react-hook-form';
+import { useGetActiveCharges } from '../../hooks/useGetActiveCharges';
 import { OrderItem } from '../../lib/types';
 
-type OrderSummaryProps = { field: ControllerRenderProps };
+type OrderSummaryProps = {
+  field: ControllerRenderProps;
+};
 
 function OrderSummary({ field }: OrderSummaryProps) {
+  const { activeCharges } = useGetActiveCharges();
   const t = useTranslations('orders');
 
   if (field.value.length === 0) return null;
+  if (!activeCharges) return null;
 
   function removeItem(id: number) {
     field.onChange(field.value.filter((item: OrderItem) => item.id !== id));
   }
 
-  const totalAmount = field.value.reduce(
-    (total: number, item: OrderItem) => total + item.price * item.quantity,
+  const totalCharges = activeCharges.reduce(
+    (total, charge) => total + charge.amount,
     0,
   );
+
+  const totalAmount =
+    field.value.reduce(
+      (total: number, item: OrderItem) => total + item.price * item.quantity,
+      0,
+    ) + totalCharges;
 
   return (
     <Card className='border-none !bg-transparent !shadow-none'>
       <CardHeader className='p-0'>
-        <div className='flex items-center justify-between'>
-          <CardTitle>
-            <Large>
-              <CurrencyDisplay amount={totalAmount} />
-            </Large>
-          </CardTitle>
+        <CardTitle className='text-start'>
+          <CurrencyDisplay amount={totalAmount} />
+          {totalCharges > 0 && (
+            <P>
+              Additional charges:{' '}
+              <span className='text-foreground text-sm'>
+                <CurrencyDisplay amount={totalCharges} />
+              </span>
+            </P>
+          )}
+        </CardTitle>
+        <CardAction>
           <Button
             variant='ghost'
             size='sm'
@@ -43,7 +66,7 @@ function OrderSummary({ field }: OrderSummaryProps) {
           >
             {t('menuSelector.clearAll')}
           </Button>
-        </div>
+        </CardAction>
       </CardHeader>
       <CardContent className='p-0'>
         <div className='h-max max-h-36 overflow-y-auto'>
