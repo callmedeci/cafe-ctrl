@@ -1,12 +1,12 @@
-import { Table, TableFooter } from '@/components/ui/table';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
+import { Table, TableFooter } from '@/components/ui/table';
 import { Suspense } from 'react';
 
+import MenuTableFooterSkeleton from '../skeletons/MenuTableFooterSkeleton';
 import MenuTableLoadingSkeleton from '../skeletons/MenuTableLoadingSkeleton';
 import MenuTableBody from './MenuTableBody';
 import MenuTableFooterContent from './MenuTableFooterContent';
 import MenuTableHeader from './MenuTableHeader';
-import MenuTableFooterSkeleton from '../skeletons/MenuTableFooterSkeleton';
 
 function MenuTable() {
   return (
