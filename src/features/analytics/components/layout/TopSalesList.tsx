@@ -6,7 +6,7 @@ import { Small } from '@/components/typography/Small';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Coffee } from 'lucide-react';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { TopSales } from '../../lib/types';
 
 type TopSalesListProps = {
@@ -15,6 +15,7 @@ type TopSalesListProps = {
 
 function TopSalesList({ sales }: TopSalesListProps) {
   const locale = useLocale();
+  const t = useTranslations('analytics.charts.topSales');
 
   return (
     <div className='space-y-2'>
@@ -45,7 +46,9 @@ function TopSalesList({ sales }: TopSalesListProps) {
             </div>
             <div className='flex flex-col items-end gap-1'>
               <div className='flex items-center gap-2'>
-                <Small>{sale.quantity} sold</Small>
+                <Small>
+                  {sale.quantity} {t('sold')}
+                </Small>
                 <Badge variant='outline'>#{index + 1}</Badge>
               </div>
 

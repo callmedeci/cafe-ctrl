@@ -1,3 +1,5 @@
+'use client';
+
 import DynamicIcon from '@/components/shared/DynamicIcon';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -42,24 +44,20 @@ function ChargeListCard({ charges }: ChargeListCardProps) {
                   className='h-4 w-4'
                 />
               </div>
-              <div className='flex-1'>
-                <div className='flex items-center gap-2'>
-                  <span className='flex-1 text-sm font-medium'>
-                    {charge.name}
-                  </span>
-                  {charge.is_active && (
-                    <Badge variant='secondary' className='text-xs'>
-                      {t('charges.active')}
-                    </Badge>
-                  )}
-                </div>
+              <div>
+                <span className='text-sm font-medium'>{charge.name}</span>
                 <p className='text-muted-foreground text-sm'>
-                  {charge.description}
+                  {charge.description?.slice(0, 55)}...
                 </p>
               </div>
             </div>
 
             <div className='flex items-center gap-2'>
+              {charge.is_active && (
+                <Badge variant='secondary' className='text-xs'>
+                  {t('charges.active')}
+                </Badge>
+              )}
               <ChargeToggleSwitch charge={charge} />
 
               <div className='flex items-center'>
