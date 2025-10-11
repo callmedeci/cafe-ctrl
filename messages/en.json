@@ -750,6 +750,20 @@
       "userNotFound": "User not found"
     }
   },
+  "reports": {
+    "metadata": {
+      "title": "Reports",
+      "description": "Generate comprehensive reports with comparative analytics, data visualization, and export capabilities for your cafe business"
+    },
+    "page": {
+      "title": "Reports",
+      "description": "Generate detailed reports and export your business data",
+      "maintenance": {
+        "title": "Under Maintenance",
+        "description": "We&apos;re working hard to bring you a better reporting experience. This feature will be available soon."
+      }
+    }
+  },
   "analytics": {
     "metadata": {
       "title": "Analytics",
