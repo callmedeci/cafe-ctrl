@@ -1,12 +1,12 @@
 import { clsx, type ClassValue } from 'clsx';
+import type * as DateFns from 'date-fns';
+import type * as DateFnsJalali from 'date-fns-jalali';
 import {
   createSearchParamsCache,
   parseAsInteger,
   parseAsString,
 } from 'nuqs/server';
 import { twMerge } from 'tailwind-merge';
-import type * as DateFns from 'date-fns';
-import type * as DateFnsJalali from 'date-fns-jalali';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -44,15 +44,14 @@ export function formatNumber({
 
 // FORMAT CURRENCY BASED ON THE LOCALE
 export function getCurrencyFormatOptions(
-  isFarsi: boolean,
+  isFa: boolean,
   maximumFractionDigits: number = 2,
 ): Intl.NumberFormatOptions {
-  if (isFarsi) {
+  if (isFa)
     return {
       maximumFractionDigits,
       minimumFractionDigits: 0,
     };
-  }
 
   return {
     style: 'currency',

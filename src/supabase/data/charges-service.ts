@@ -18,7 +18,7 @@ export async function getCharges(): Promise<
     const { data: charges, error: chargesError } = await supabase
       .from('additional_charges')
       .select('*')
-      .order('created_at', { ascending: false });
+      .order('is_active', { ascending: false });
 
     if (chargesError)
       return {
