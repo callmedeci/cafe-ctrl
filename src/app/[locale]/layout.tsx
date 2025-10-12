@@ -112,7 +112,21 @@ export default async function RootLayout({
           isFa && vazirmatnFD.className,
         )}
       >
-        <ThemeProvider attribute={'class'} defaultTheme='system' enableSystem>
+        <ThemeProvider
+          themes={[
+            'light',
+            'dark',
+            'pastel-dream',
+            'lavender-mist',
+            'peach-grove',
+            'sage-whisper',
+            'midnight-slate',
+            'mocha-dream',
+          ]}
+          attribute={'class'}
+          defaultTheme='system'
+          enableSystem
+        >
           <main>
             <NextIntlClientProvider>
               <NuqsAdapter>{children}</NuqsAdapter>

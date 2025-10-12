@@ -172,6 +172,415 @@
   --text-muted-soft: oklch(0.55 0.01 240);
 }
 
+.pastel-dream {
+  --background: oklch(0.99 0.005 280);
+  --foreground: oklch(0.3 0.03 260);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.3 0.03 260);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.3 0.03 260);
+
+  --primary: oklch(0.82 0.07 280);
+  --primary-foreground: oklch(0.2 0.03 280);
+
+  --secondary: oklch(0.96 0.01 280);
+  --secondary-foreground: oklch(0.3 0.03 260);
+
+  --muted: oklch(0.96 0.01 280);
+  --muted-foreground: oklch(0.55 0.015 260);
+
+  --accent: oklch(0.96 0.01 280);
+  --accent-foreground: oklch(0.3 0.03 260);
+
+  --border: oklch(0.92 0.01 280);
+  --input: oklch(0.94 0.01 280);
+  --ring: oklch(0.8 0.08 280);
+
+  --destructive: oklch(0.85 0.1 20);
+  --destructive-foreground: oklch(0.35 0.12 20);
+
+  /* Chart Colors */
+  --chart-1: oklch(0.82 0.07 280); /* Lavender */
+  --chart-2: oklch(0.85 0.06 230); /* Blue */
+  --chart-3: oklch(0.9 0.08 150); /* Green */
+  --chart-4: oklch(0.9 0.06 50); /* Peach */
+  --chart-5: oklch(0.95 0.07 90); /* Yellow */
+
+  /* Sidebar */
+  --sidebar: oklch(0.975 0.008 270);
+  --sidebar-foreground: oklch(0.3 0.03 260);
+  --sidebar-primary: oklch(0.82 0.07 280);
+  --sidebar-primary-foreground: oklch(0.2 0.03 280);
+  --sidebar-accent: oklch(0.94 0.015 270);
+  --sidebar-accent-foreground: oklch(0.3 0.03 260);
+  --sidebar-border: oklch(0.91 0.01 270);
+  --sidebar-ring: oklch(0.8 0.08 280);
+
+  /* Status Colors */
+  --success: oklch(0.9 0.08 150);
+  --success-foreground: oklch(0.25 0.08 150);
+  --warning: oklch(0.95 0.07 90);
+  --warning-foreground: oklch(0.4 0.1 90);
+  --error: oklch(0.85 0.1 20);
+  --error-foreground: oklch(0.35 0.12 20);
+  --info: oklch(0.88 0.06 230);
+  --info-foreground: oklch(0.2 0.08 230);
+
+  /* Extra variables from existing themes */
+  --subtle-bg: oklch(0.98 0.005 280);
+  --hover-bg: oklch(0.94 0.015 270);
+  --text-muted-soft: oklch(0.6 0.015 260);
+
+  /* Progress Bar */
+  --progress-track: oklch(0.94 0.015 270);
+  --progress-fill: oklch(0.82 0.07 280);
+}
+
+.lavender-mist {
+  /* Base Colors - Neutrals are tinted with a cool lavender hue (285) */
+  --background: oklch(0.99 0.006 285);
+  --foreground: oklch(0.2 0.025 285);
+
+  /* Cards & Popovers - A subtle, off-white lavender */
+  --card: oklch(0.995 0.004 285);
+  --card-foreground: var(--foreground);
+  --popover: var(--card);
+  --popover-foreground: var(--foreground);
+
+  /* Primary Action - A more saturated and confident lavender */
+  --primary: oklch(0.65 0.18 285);
+  --primary-foreground: oklch(0.99 0.003 285);
+
+  /* Secondary Action */
+  --secondary: oklch(0.95 0.015 285);
+  --secondary-foreground: oklch(0.3 0.03 285);
+
+  /* Muted & Accent States - Accent is a complementary soft magenta */
+  --muted: oklch(0.96 0.012 285);
+  --muted-foreground: oklch(0.5 0.02 285);
+  --accent: oklch(0.94 0.035 320);
+  --accent-foreground: oklch(0.25 0.03 320);
+
+  /* Borders, Inputs & Rings */
+  --border: oklch(0.92 0.015 285);
+  --input: oklch(0.94 0.018 285);
+  --ring: var(--primary);
+
+  /* Destructive Action - A soft, desaturated rose */
+  --destructive: oklch(0.65 0.2 20);
+  --destructive-foreground: oklch(0.99 0.005 20);
+
+  /* Charts - A harmonious and vibrant palette */
+  --chart-1: oklch(0.65 0.18 285); /* Lavender */
+  --chart-2: oklch(0.7 0.14 200); /* Cyan */
+  --chart-3: oklch(0.7 0.15 320); /* Magenta */
+  --chart-4: oklch(0.75 0.14 150); /* Mint */
+  --chart-5: oklch(0.7 0.16 340); /* Rose */
+
+  /* Sidebar */
+  --sidebar: oklch(0.975 0.01 285);
+  --sidebar-foreground: var(--foreground);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: oklch(0.93 0.025 290);
+  --sidebar-accent-foreground: var(--secondary-foreground);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
+
+  /* Status Colors */
+  --success: oklch(0.7 0.15 155);
+  --success-foreground: oklch(0.99 0.005 155);
+  --warning: oklch(0.8 0.16 90);
+  --warning-foreground: oklch(0.25 0.04 90);
+  --error: var(--destructive);
+  --error-foreground: var(--destructive-foreground);
+  --info: oklch(0.7 0.14 245);
+  --info-foreground: oklch(0.99 0.005 245);
+
+  /* Progress Bar */
+  --progress-track: var(--secondary);
+  --progress-fill: var(--primary);
+}
+
+.peach-grove {
+  /* Base Colors - Neutrals are tinted with a warm peach hue (45) */
+  --background: oklch(0.99 0.005 45);
+  --foreground: oklch(0.25 0.035 45);
+
+  /* Cards & Popovers - Pure white for a clean lift */
+  --card: oklch(1 0 0);
+  --card-foreground: var(--foreground);
+  --popover: var(--card);
+  --popover-foreground: var(--foreground);
+
+  /* Primary Action - A more confident and vibrant apricot/peach */
+  --primary: oklch(0.75 0.12 45);
+  --primary-foreground: oklch(0.2 0.05 45);
+
+  /* Secondary Action */
+  --secondary: oklch(0.96 0.018 45);
+  --secondary-foreground: oklch(0.4 0.03 45);
+
+  /* Muted & Accent States */
+  --muted: var(--secondary);
+  --muted-foreground: oklch(0.6 0.02 45);
+  --accent: oklch(0.94 0.025 45);
+  --accent-foreground: var(--secondary-foreground);
+
+  /* Borders, Inputs & Rings */
+  --border: oklch(0.92 0.015 45);
+  --input: oklch(0.95 0.017 45);
+  --ring: oklch(0.7 0.13 45);
+
+  /* Destructive Action - A desaturated but clear red that complements the warmth */
+  --destructive: oklch(0.75 0.15 15);
+  --destructive-foreground: oklch(0.25 0.1 15);
+
+  /* Charts - A harmonious and warm palette */
+  --chart-1: oklch(0.75 0.12 45); /* Peach */
+  --chart-2: oklch(0.8 0.09 150); /* Sage Green */
+  --chart-3: oklch(0.85 0.07 230); /* Sky Blue */
+  --chart-4: oklch(0.88 0.08 90); /* Mellow Yellow */
+  --chart-5: oklch(0.8 0.08 280); /* Faded Lavender */
+
+  /* Sidebar */
+  --sidebar: oklch(0.975 0.009 45);
+  --sidebar-foreground: var(--foreground);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: var(--accent);
+  --sidebar-accent-foreground: var(--secondary-foreground);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
+
+  /* Status Colors */
+  --success: oklch(0.8 0.1 150);
+  --success-foreground: oklch(0.2 0.05 150);
+  --warning: oklch(0.85 0.12 90);
+  --warning-foreground: oklch(0.35 0.07 90);
+  --error: var(--destructive);
+  --error-foreground: var(--destructive-foreground);
+  --info: oklch(0.8 0.09 230);
+  --info-foreground: oklch(0.2 0.05 230);
+
+  /* Progress Bar */
+  --progress-track: var(--secondary);
+  --progress-fill: var(--primary);
+}
+
+.sage-whisper {
+  /* Base Colors - Neutrals are tinted with a calming sage hue (140) */
+  --background: oklch(0.99 0.008 140);
+  --foreground: oklch(0.2 0.03 140);
+
+  /* Cards & Popovers */
+  --card: oklch(0.995 0.005 140);
+  --card-foreground: var(--foreground);
+  --popover: var(--card);
+  --popover-foreground: var(--foreground);
+
+  /* Primary Action - A muted, confident sage for a grounded feel */
+  --primary: oklch(0.6 0.1 145);
+  --primary-foreground: oklch(0.99 0.005 145);
+
+  /* Secondary Action - A very light sage for a cohesive, monochromatic system */
+  --secondary: oklch(0.95 0.015 140);
+  --secondary-foreground: oklch(0.3 0.03 140);
+
+  /* Muted & Accent States - Accent is a warm terracotta for a natural contrast */
+  --muted: var(--secondary);
+  --muted-foreground: oklch(0.5 0.025 140);
+  --accent: oklch(0.92 0.025 140);
+  --accent-foreground: var(--secondary-foreground);
+
+  /* Borders, Inputs & Rings */
+  --border: oklch(0.9 0.015 140);
+  --input: oklch(0.93 0.018 140);
+  --ring: var(--primary);
+
+  /* Destructive Action - A soft, earthy brick red */
+  --destructive: oklch(0.65 0.18 25);
+  --destructive-foreground: oklch(0.99 0.005 25);
+
+  /* Charts - A nature-inspired palette */
+  --chart-1: oklch(0.6 0.1 145); /* Sage */
+  --chart-2: oklch(0.68 0.12 180); /* Teal */
+  --chart-3: oklch(0.7 0.11 45); /* Terracotta */
+  --chart-4: oklch(0.7 0.09 85); /* Olive */
+  --chart-5: oklch(0.66 0.13 220); /* Slate Blue */
+
+  /* Sidebar */
+  --sidebar: oklch(0.97 0.012 142);
+  --sidebar-foreground: var(--foreground);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: var(--accent);
+  --sidebar-accent-foreground: var(--secondary-foreground);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
+
+  /* Status Colors */
+  --success: oklch(0.65 0.14 155);
+  --success-foreground: oklch(0.99 0.005 155);
+  --warning: oklch(0.75 0.14 75);
+  --warning-foreground: oklch(0.25 0.04 75);
+  --error: var(--destructive);
+  --error-foreground: var(--destructive-foreground);
+  --info: oklch(0.65 0.12 220);
+  --info-foreground: oklch(0.99 0.005 220);
+
+  /* Progress Bar */
+  --progress-track: var(--secondary);
+  --progress-fill: var(--primary);
+}
+
+.midnight-slate {
+  /* Base - Deep slate background following shadcn structure */
+  --background: oklch(0.145 0.015 250);
+  --foreground: oklch(0.985 0.008 250);
+
+  /* Cards - Elevated surface (same lightness as shadcn: 0.205) */
+  --card: oklch(0.205 0.018 250);
+  --card-foreground: oklch(0.985 0.008 250);
+  --popover: oklch(0.205 0.018 250);
+  --popover-foreground: oklch(0.985 0.008 250);
+
+  /* Primary - BRIGHT cyan (light on dark, like shadcn) */
+  --primary: oklch(0.85 0.16 230);
+  --primary-foreground: oklch(0.15 0.02 230);
+
+  /* Secondary - Subtle surface (same lightness as shadcn: 0.269) */
+  --secondary: oklch(0.269 0.02 250);
+  --secondary-foreground: oklch(0.985 0.008 250);
+
+  /* Muted - Same lightness structure */
+  --muted: oklch(0.269 0.02 250);
+  --muted-foreground: oklch(0.708 0.012 250);
+
+  /* Accent - For hover states (same lightness as secondary) */
+  --accent: oklch(0.269 0.025 250);
+  --accent-foreground: oklch(0.985 0.008 250);
+
+  /* Borders - Transparent overlays like shadcn */
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.85 0.16 230);
+
+  /* Destructive - Coral-red with proper contrast */
+  --destructive: oklch(0.7 0.19 20);
+  --destructive-foreground: oklch(0.1 0.01 20);
+
+  /* Charts - Vibrant, saturated cool-toned palette */
+  --chart-1: oklch(0.75 0.18 230); /* Cyan */
+  --chart-2: oklch(0.72 0.2 285); /* Violet */
+  --chart-3: oklch(0.76 0.17 165); /* Emerald */
+  --chart-4: oklch(0.78 0.16 65); /* Amber */
+  --chart-5: oklch(0.74 0.19 340); /* Rose */
+
+  /* Sidebar - Same as card */
+  --sidebar: oklch(0.205 0.018 250);
+  --sidebar-foreground: oklch(0.985 0.008 250);
+  --sidebar-primary: oklch(0.75 0.18 230);
+  --sidebar-primary-foreground: oklch(0.985 0.008 230);
+  --sidebar-accent: oklch(0.269 0.02 250);
+  --sidebar-accent-foreground: oklch(0.985 0.008 250);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.85 0.16 230);
+
+  /* Status Colors - Following shadcn's contrast pattern */
+  --success: oklch(0.72 0.18 160);
+  --success-foreground: oklch(0.1 0.01 160);
+  --warning: oklch(0.8 0.18 75);
+  --warning-foreground: oklch(0.15 0.02 75);
+  --error: oklch(0.7 0.19 20);
+  --error-foreground: oklch(0.1 0.01 20);
+  --info: oklch(0.74 0.16 235);
+  --info-foreground: oklch(0.1 0.01 235);
+
+  /* Utility colors */
+  --subtle-bg: oklch(0.18 0.018 250);
+  --hover-bg: oklch(0.22 0.022 250);
+  --text-muted-soft: oklch(0.55 0.012 250);
+
+  /* Progress Bar */
+  --progress-track: oklch(0.269 0.02 250);
+  --progress-fill: oklch(0.85 0.16 230);
+}
+
+.mocha-dream {
+  /* Base - Deep background with subtle blue-purple warmth */
+  --background: oklch(0.145 0.015 265);
+  --foreground: oklch(0.985 0.008 265);
+
+  /* Cards - Elevated surface (same structure as shadcn) */
+  --card: oklch(0.205 0.018 265);
+  --card-foreground: oklch(0.985 0.008 265);
+  --popover: oklch(0.205 0.018 265);
+  --popover-foreground: oklch(0.985 0.008 265);
+
+  /* Primary - BRIGHT lavender (light on dark, like shadcn) */
+  --primary: oklch(0.85 0.15 280);
+  --primary-foreground: oklch(0.15 0.02 280);
+
+  /* Secondary - Subtle surface (same lightness as shadcn: 0.269) */
+  --secondary: oklch(0.269 0.02 265);
+  --secondary-foreground: oklch(0.985 0.008 265);
+
+  /* Muted - Same lightness structure */
+  --muted: oklch(0.269 0.02 265);
+  --muted-foreground: oklch(0.708 0.012 265);
+
+  /* Accent - For hover states (same lightness as secondary) */
+  --accent: oklch(0.269 0.025 265);
+  --accent-foreground: oklch(0.985 0.008 265);
+
+  /* Borders - Transparent overlays like shadcn */
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.85 0.15 280);
+
+  /* Destructive - Soft red with proper contrast */
+  --destructive: oklch(0.7 0.19 15);
+  --destructive-foreground: oklch(0.1 0.01 15);
+
+  /* Charts - Vibrant, saturated Catppuccin colors */
+  --chart-1: oklch(0.75 0.18 280); /* Lavender */
+  --chart-2: oklch(0.72 0.16 180); /* Teal */
+  --chart-3: oklch(0.78 0.17 50); /* Peach */
+  --chart-4: oklch(0.76 0.16 140); /* Green */
+  --chart-5: oklch(0.74 0.2 340); /* Pink */
+
+  /* Sidebar - Same as card */
+  --sidebar: oklch(0.205 0.018 265);
+  --sidebar-foreground: oklch(0.985 0.008 265);
+  --sidebar-primary: oklch(0.75 0.18 280);
+  --sidebar-primary-foreground: oklch(0.985 0.008 280);
+  --sidebar-accent: oklch(0.269 0.02 265);
+  --sidebar-accent-foreground: oklch(0.985 0.008 265);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.85 0.15 280);
+
+  /* Status Colors - Following shadcn's contrast pattern */
+  --success: oklch(0.72 0.17 155);
+  --success-foreground: oklch(0.1 0.01 155);
+  --warning: oklch(0.8 0.18 75);
+  --warning-foreground: oklch(0.15 0.02 75);
+  --error: oklch(0.7 0.19 15);
+  --error-foreground: oklch(0.1 0.01 15);
+  --info: oklch(0.74 0.15 240);
+  --info-foreground: oklch(0.1 0.01 240);
+
+  /* Utility colors */
+  --subtle-bg: oklch(0.18 0.018 265);
+  --hover-bg: oklch(0.22 0.022 265);
+  --text-muted-soft: oklch(0.55 0.012 265);
+
+  /* Progress Bar */
+  --progress-track: oklch(0.269 0.02 265);
+  --progress-fill: oklch(0.85 0.15 280);
+}
+
 .direct-ltr {
   direction: ltr;
 }
@@ -181,6 +590,7 @@
 
 @theme {
   --animate-wiggle: wiggle 1s ease-in-out infinite;
+
   @keyframes wiggle {
     0%,
     100% {
