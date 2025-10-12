@@ -11,12 +11,12 @@ type CurrencyDisplayProps = {
 
 function CurrencyDisplay({ amount, className }: CurrencyDisplayProps) {
   const locale = useLocale();
-
   const isFa = locale === 'fa';
+
   const formatted = formatNumber({
     locale: isFa ? 'fa-IR' : 'en-US',
     number: amount,
-    options: getCurrencyFormatOptions(isFa),
+    options: getCurrencyFormatOptions(isFa, isFa ? 0 : undefined),
   });
 
   if (isFa) {

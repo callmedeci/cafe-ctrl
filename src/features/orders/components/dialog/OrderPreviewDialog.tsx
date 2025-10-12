@@ -10,7 +10,7 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 import { Separator } from '@/components/ui/separator';
-import { getDateLibPromise } from '@/lib/utils';
+import { cn, getDateLibPromise } from '@/lib/utils';
 import { OrderRow } from '@/types/tables';
 import {
   Calendar,
@@ -93,7 +93,7 @@ function OrderPreviewDialog({ order, children }: OrderPreviewDialogProps) {
                 <MapPin className='size-3 md:size-4' />
                 {t('cards.details.type')}
               </span>
-              <Badge className='w-18' variant={'outline'}>
+              <Badge variant={'outline'}>
                 {order.is_togo ? <ShoppingBag /> : <MapPin />}
                 {order.is_togo ? t('type.togo') : t('type.dinein')}
               </Badge>
@@ -107,7 +107,10 @@ function OrderPreviewDialog({ order, children }: OrderPreviewDialogProps) {
               </span>
               <Badge
                 variant={'outline'}
-                className={`${order.status !== 'paid' ? 'border-warning text-warning' : ''} w-18 capitalize`}
+                className={cn(
+                  'capitalize',
+                  order.status !== 'paid' && 'border-warning text-warning',
+                )}
               >
                 {order.status === 'paid' ? <CreditCard /> : <Clock />}
                 {t(`status.${order.status}`)}

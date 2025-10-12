@@ -39,27 +39,47 @@ export const languages = [
 export const themes = [
   {
     id: 'light',
-    name: 'Light',
-    description: 'Clean and bright interface',
     icon: Sun,
-    preview: 'bg-neutral-50 border-neutral-50',
-    colors: ['bg-neutral-200', 'bg-neutral-300', 'bg-neutral-400'],
+    color: 'bg-neutral-200',
   },
   {
     id: 'dark',
-    name: 'Dark',
-    description: 'Easy on the eyes',
     icon: Moon,
-    preview: 'bg-neutral-700 border-neutral-600',
-    colors: ['bg-neutral-800', 'bg-neutral-900', 'bg-neutral-950'],
+    color: 'bg-neutral-800',
   },
   {
     id: 'system',
-    name: 'System',
-    description: 'Follows your device settings',
     icon: Monitor,
-    preview:
-      'bg-gradient-to-br from-neutral-400 to-neutral-900 border-neutral-500',
-    colors: ['bg-neutral-300', 'bg-neutral-500', 'bg-neutral-900'],
+    color: 'bg-gradient-to-br from-neutral-400 to-neutral-800',
+  },
+  {
+    id: 'pastel-dream',
+    icon: Sun,
+    color: 'bg-purple-200',
+  },
+  {
+    id: 'lavender-mist',
+    icon: Moon,
+    color: 'bg-purple-300',
+  },
+  {
+    id: 'peach-grove',
+    icon: Sun,
+    color: 'bg-orange-200',
+  },
+  {
+    id: 'sage-whisper',
+    icon: Sun,
+    color: 'bg-green-200',
+  },
+  {
+    id: 'midnight-slate',
+    icon: Moon,
+    color: 'bg-slate-700',
+  },
+  {
+    id: 'mocha-dream',
+    icon: Moon,
+    color: 'bg-purple-900',
   },
 ];

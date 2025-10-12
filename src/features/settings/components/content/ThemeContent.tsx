@@ -1,15 +1,14 @@
 'use client';
 
-import { Badge } from '@/components/ui/badge';
 import { CardContent } from '@/components/ui/card';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
-import { themes } from '../../constant/constant';
 import { useTranslations } from 'next-intl';
+import { Check } from 'lucide-react';
 
 function ThemeContent() {
   const t = useTranslations('settings');
-  const { theme: selectedTheme, setTheme } = useTheme();
+  const { theme: selectedTheme, setTheme, themes } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -19,53 +18,32 @@ function ThemeContent() {
   if (!mounted) return null;
 
   return (
-    <CardContent>
-      <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3'>
-        {themes.map((theme) => {
-          const IconComponent = theme.icon;
-          return (
-            <div
-              key={theme.id}
-              className={`group relative cursor-pointer rounded-lg p-4 ring-2 transition-all ${
-                selectedTheme === theme.id
-                  ? 'ring-primary/20 bg-primary/5'
-                  : 'ring-border hover:bg-accent/50'
-              }`}
-              onClick={() => setTheme(theme.id)}
-            >
-              <div className='space-y-2'>
-                <div className='flex items-center justify-between'>
-                  <IconComponent className='h-5 w-5' />
-                </div>
+    <CardContent className='grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-5'>
+      {themes.map((theme) => {
+        const isSelected = selectedTheme === theme;
 
-                <div className={`h-16 rounded-md ${theme.preview} p-2`}>
-                  <div className='flex h-full gap-1'>
-                    {theme.colors.map((color, index) => (
-                      <div
-                        key={index}
-                        className={`flex-1 rounded ${color} opacity-80`}
-                      />
-                    ))}
-                  </div>
-                </div>
+        return (
+          <button
+            key={theme}
+            className={`group hover:border-primary/50 relative flex items-center justify-center rounded-md border px-3 py-2 text-sm transition-all ${
+              isSelected
+                ? 'border-primary bg-primary/5 font-medium'
+                : 'border-border hover:bg-accent/50'
+            }`}
+            onClick={() => setTheme(theme)}
+          >
+            <span className='line-clamp-1 text-center capitalize'>
+              {t(`theme.${theme}.name`)}
+            </span>
 
-                <div>
-                  <h3 className='font-medium'>{t(`theme.${theme.id}.name`)}</h3>
-                  <p className='text-muted-foreground text-sm'>
-                    {t(`theme.${theme.id}.description`)}
-                  </p>
-                </div>
+            {isSelected && (
+              <div className='bg-primary absolute -top-1.5 -right-1.5 flex h-5 w-5 items-center justify-center rounded-full'>
+                <Check className='text-primary-foreground h-3 w-3' />
               </div>
-
-              {selectedTheme === theme.id && (
-                <Badge className='absolute -top-1 -right-1' variant='secondary'>
-                  {t('theme.active')}
-                </Badge>
-              )}
-            </div>
-          );
-        })}
-      </div>
+            )}
+          </button>
+        );
+      })}
     </CardContent>
   );
 }

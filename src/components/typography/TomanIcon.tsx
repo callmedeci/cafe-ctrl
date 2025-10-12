@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils';
 function TomanIcon({ className }: { className?: string }) {
   return (
     <svg
-      className={cn('text-accent-foreground size-5 xl:size-6', className)}
+      className={cn('text-accent-foreground size-4 xl:size-5', className)}
       width='25'
       height='25'
       viewBox='0 0 14 16'

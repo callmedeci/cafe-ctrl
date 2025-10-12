@@ -37,11 +37,10 @@ function OrderSummary({ field }: OrderSummaryProps) {
     0,
   );
 
-  const totalAmount =
-    field.value.reduce(
-      (total: number, item: OrderItem) => total + item.price * item.quantity,
-      0,
-    ) + totalCharges;
+  const totalAmount = field.value.reduce(
+    (total: number, item: OrderItem) => total + item.price * item.quantity,
+    0,
+  );
 
   return (
     <Card className='border-none !bg-transparent !shadow-none'>
@@ -49,11 +48,9 @@ function OrderSummary({ field }: OrderSummaryProps) {
         <CardTitle className='text-start'>
           <CurrencyDisplay amount={totalAmount} />
           {totalCharges > 0 && (
-            <P>
-              Additional charges:{' '}
-              <span className='text-foreground text-sm'>
-                <CurrencyDisplay amount={totalCharges} />
-              </span>
+            <P className='mt-1 flex gap-1'>
+              {t('cards.items.additionalCharges')}:{' '}
+              <CurrencyDisplay amount={totalCharges} />
             </P>
           )}
         </CardTitle>
