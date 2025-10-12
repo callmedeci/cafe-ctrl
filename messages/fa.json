@@ -254,7 +254,8 @@
         "title": "اقلام سفارش ({count})",
         "noItems": "هیچ قلمی در این سفارش وجود ندارد",
         "total": "مجموع",
-        "each": "هر عدد"
+        "each": "هر عدد",
+        "additionalCharges": "هزینه‌های اضافی"
       },
       "details": {
         "title": "جزئیات سفارش",
@@ -594,6 +595,30 @@
       "system": {
         "name": "سیستم",
         "description": "از تنظیمات دستگاه شما پیروی می‌کند"
+      },
+      "pastel-dream": {
+        "name": "رویای پاستلی",
+        "description": "رنگ‌های ملایم و رویایی پاستلی"
+      },
+      "lavender-mist": {
+        "name": "مه اسطوخودوس",
+        "description": "ترکیب ظریف بنفش و یاسی"
+      },
+      "peach-grove": {
+        "name": "باغ هلو",
+        "description": "رنگ‌های گرم و دلنشین هلویی"
+      },
+      "sage-whisper": {
+        "name": "نجوای مریم گلی",
+        "description": "پالت آرامش‌بخش سبز مریم گلی"
+      },
+      "midnigh-slate": {
+        "name": "سنگ نیمه‌شب",
+        "description": "رنگ‌های عمیق با ته‌رنگ خنک"
+      },
+      "mocha-dream": {
+        "name": "رویای موکا",
+        "description": "موکای غنی با ته‌رنگ بنفش"
       },
       "active": "فعال"
     },

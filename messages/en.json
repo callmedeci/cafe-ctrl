@@ -254,7 +254,8 @@
         "title": "Order Items ({count})",
         "noItems": "No items in this order",
         "total": "Total",
-        "each": "each"
+        "each": "each",
+        "additionalCharges": "Additional charges"
       },
       "details": {
         "title": "Order Details",
@@ -594,6 +595,30 @@
       "system": {
         "name": "System",
         "description": "Follows your device settings"
+      },
+      "pastel-dream": {
+        "name": "Pastel Dream",
+        "description": "Soft and dreamy pastel colors"
+      },
+      "lavender-mist": {
+        "name": "Lavender Mist",
+        "description": "Elegant lavender and purple tones"
+      },
+      "peach-grove": {
+        "name": "Peach Grove",
+        "description": "Warm and inviting peach tones"
+      },
+      "sage-whisper": {
+        "name": "Sage Whisper",
+        "description": "Calming sage green palette"
+      },
+      "midnight-slate": {
+        "name": "Midnight Slate",
+        "description": "Deep slate with cool undertones"
+      },
+      "mocha-dream": {
+        "name": "Mocha Dream",
+        "description": "Rich mocha with purple undertones"
       },
       "active": "Active"
     },
