@@ -1,4 +1,3 @@
-// components/PDFDocument.tsx
 'use client';
 
 import OrderPreviewLoading from '@/app/[locale]/(dashboard)/dashboard/orders/view/[orderId]/preview/loading';
@@ -18,7 +17,7 @@ import { use, useEffect, useState } from 'react';
 
 // PDFViewer needs to be dynamically imported (client-side only)
 const PDFViewer = dynamic(
-  () => import('@react-pdf/renderer').then((mod) => mod.PDFViewer),
+  () => import('@/components/providers/ReactPDFViewer'),
   {
     ssr: false,
     loading: () => <OrderPreviewLoading hasHeader={false} />,

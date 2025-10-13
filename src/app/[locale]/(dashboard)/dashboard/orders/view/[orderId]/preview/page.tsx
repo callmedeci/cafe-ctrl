@@ -5,13 +5,6 @@ import { getOrderById } from '@/supabase/data/orders-service';
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 
-type PageProps = {
-  params: {
-    locale: string;
-    orderId: string;
-  };
-};
-
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('orders.view.preview.metadata');
 
@@ -21,9 +14,11 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-async function OrderPreviewPage({ params }: PageProps) {
+async function OrderPreviewPage({
+  params,
+}: PageProps<'/[locale]/dashboard/orders/view/[orderId]/preview'>) {
   const t = await getTranslations('orders.view.preview');
-  const { orderId } = params;
+  const { orderId } = await params;
   const { data: order, error } = await getOrderById(orderId);
 
   if (error || !order)
