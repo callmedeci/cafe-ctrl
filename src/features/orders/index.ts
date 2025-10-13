@@ -6,6 +6,7 @@ export { default as OrderNotesCard } from './components/card/OrderNotesCard';
 // Layout
 export { default as OrdersActions } from './components/layout/OrdersActions';
 export { default as UpdateOrderAction } from './components/layout/UpdateOrderAction';
+export { default as OrderItemDocument } from './components/layout/OrderItemDocument';
 
 // Skeletons
 export { default as OrderDetailsCardSkeleton } from './components/skeletons/OrderDetailsCardSkeleton';

@@ -13,17 +13,16 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
+import { cn } from '@/lib/utils';
 import { updateOrderIsToGo } from '@/supabase/data/orders-service';
 import { OrderRow } from '@/types/tables';
 import { MapPin, ShoppingBag } from 'lucide-react';
-import { MouseEvent, useOptimistic, useTransition } from 'react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
+import { MouseEvent, startTransition, useOptimistic } from 'react';
 
 type OrderIsToGoSelectorProps = { order: OrderRow };
 
 function OrderIsToGoSelector({ order }: OrderIsToGoSelectorProps) {
-  const t = useTranslations('orders');
-  const [, startTransition] = useTransition();
   const [optimisticOrder, setOptimisticOrder] = useOptimistic(
     order,
     (curOrder, isTogo: boolean) => ({
@@ -31,6 +30,10 @@ function OrderIsToGoSelector({ order }: OrderIsToGoSelectorProps) {
       is_togo: isTogo,
     }),
   );
+
+  const t = useTranslations('orders');
+  const locale = useLocale();
+  const isFa = locale === 'fa';
 
   async function handleUpdateIsTogo(
     e: MouseEvent<HTMLDivElement, globalThis.MouseEvent>,
@@ -70,8 +73,13 @@ function OrderIsToGoSelector({ order }: OrderIsToGoSelectorProps) {
             onClick={(e) => handleUpdateIsTogo(e, true)}
             className={optimisticOrder.is_togo ? 'bg-accent/50' : ''}
           >
-            <Badge className='flex w-full items-center justify-start'>
-              <ShoppingBag />
+            <Badge
+              className={cn(
+                'flex w-full items-center justify-start',
+                isFa ? 'direct-rtl' : 'direct-ltr',
+              )}
+            >
+              <ShoppingBag className='text-card' />
               {t('type.togo')}
             </Badge>
           </DropdownMenuItem>
@@ -81,7 +89,10 @@ function OrderIsToGoSelector({ order }: OrderIsToGoSelectorProps) {
           >
             <Badge
               variant={'outline'}
-              className='flex w-full items-center justify-start'
+              className={cn(
+                'flex w-full items-center justify-start',
+                isFa ? 'direct-rtl' : 'direct-ltr',
+              )}
             >
               <MapPin />
               {t('type.dinein')}

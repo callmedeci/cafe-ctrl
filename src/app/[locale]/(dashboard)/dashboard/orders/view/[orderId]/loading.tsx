@@ -65,7 +65,9 @@ function OrderViewLoading() {
                       <div className='bg-border my-4 h-px' />
 
                       <div className='flex items-center justify-between'>
-                        <span className='text-base font-semibold'>Total</span>
+                        <span className='text-base font-semibold'>
+                          <Skeleton className='h-4 w-14' aria-hidden='true' />
+                        </span>
                         <Skeleton className='h-5 w-20' aria-hidden='true' />
                       </div>
                     </div>

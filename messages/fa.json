@@ -241,6 +241,19 @@
         "title": "سفارش {orderName}",
         "description": "مشاهده اطلاعات کامل سفارش {orderName}، شامل اقلام، وضعیت، جزئیات مشتری و یادداشت‌های سفارش"
       },
+      "preview": {
+        "metadata": {
+          "title": "پیش‌نمایش سفارش",
+          "description": "پیش‌نمایش و چاپ جزئیات سفارش در قالب PDF"
+        },
+        "title": "پیش‌نمایش سفارش",
+        "description": "تولید نسخه قابل چاپ PDF از جزئیات سفارش شما",
+        "error": {
+          "title": "بارگذاری سفارش ناموفق بود",
+          "description": "نتوانستیم جزئیات سفارش را بارگذاری کنیم. لطفاً دوباره تلاش کنید.",
+          "tryAgain": "تلاش مجدد"
+        }
+      },
       "title": "سفارش {orderName}",
       "description": "مشاهده و مدیریت جزئیات، اقلام و اطلاعات مشتری.",
       "goBack": "بازگشت",
@@ -290,7 +303,11 @@
       "preview": {
         "title": "#{orderName}",
         "description": "پیش‌نمایش سریع جزئیات سفارش",
-        "orderItems": "اقلام سفارش"
+        "orderItems": "اقلام سفارش",
+        "loading": {
+          "title": "در حال بارگذاری PDF...",
+          "description": "در حال بارگذاری پیش‌نمایش PDF سفارش"
+        }
       }
     },
     "menuSelector": {
@@ -883,6 +900,32 @@
     },
     "loading": {
       "loadingData": "در حال بارگذاری داده‌های تحلیلی..."
+    }
+  },
+  "pdf": {
+    "title": "جزئیات سفارش",
+    "orderNumber": "شماره سفارش: #",
+    "date": "تاریخ:",
+    "customerName": "نام مشتری:",
+    "contact": "اطلاعات تماس:",
+    "orderName": "نام سفارش:",
+    "orderType": "نوع سفارش:",
+    "orderStatus": "وضعیت:",
+    "takeaway": "بیرون‌بر",
+    "dineIn": "سالن",
+    "productName": "آیتم",
+    "quantity": "تعداد",
+    "price": "قیمت",
+    "currency": "تومان",
+    "total": "جمع کل:",
+    "notes": "یادداشت‌ها:",
+    "thankYou": "از خرید شما متشکریم!",
+    "status": {
+      "paid": "پرداخت شده",
+      "unpaid": "پرداخت نشده",
+      "pending": "در انتظار",
+      "completed": "تکمیل شده",
+      "cancelled": "لغو شده"
     }
   },
   "metadata": {

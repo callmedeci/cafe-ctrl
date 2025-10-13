@@ -148,18 +148,18 @@ function OrderPreviewDialog({ order, children }: OrderPreviewDialogProps) {
             <h4 className='text-xs font-medium md:text-sm'>
               {t('dialog.preview.orderItems')}
             </h4>
-            <div className='bg-muted/50 max-h-24 space-y-1 overflow-y-auto rounded-md p-2 md:max-h-48'>
-              {order.items?.map((item, index) => (
-                <div
-                  key={index}
-                  className='flex items-center justify-between text-xs md:text-sm'
-                >
-                  <Badge variant={'outline'}>
-                    {item.quantity}x {item.name}
-                  </Badge>
-                  <span className='font-medium'>
-                    <CurrencyDisplay amount={item.price * item.quantity} />
-                  </span>
+            <div className='max-h-24 overflow-y-auto md:max-h-48'>
+              {order.items?.map((item, index, array) => (
+                <div key={index}>
+                  <div className='flex items-center justify-between text-xs md:text-sm'>
+                    <Badge variant={'outline'}>
+                      {item.quantity}x {item.name}
+                    </Badge>
+                    <span className='font-medium'>
+                      <CurrencyDisplay amount={item.price * item.quantity} />
+                    </span>
+                  </div>
+                  {index < array.length - 1 && <Separator className='my-2' />}
                 </div>
               ))}
             </div>

@@ -12,7 +12,7 @@ import { TableCell, TableRow } from '@/components/ui/table';
 import { useExcludedColumnsQuery } from '@/hooks/useExcludedColumnsQuery';
 import { Link } from '@/i18n/navigation';
 import { OrderRow } from '@/types/tables';
-import { Ellipsis, Eye, SquarePen, Trash2 } from 'lucide-react';
+import { Ellipsis, Eye, Printer, SquarePen, Trash2 } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { handleCopyOrderId } from '../../lib/utils';
 import DeleteOrderDialog from '../dialog/DeleteOrderDialog';
@@ -28,9 +28,11 @@ type OrdersTableRowProps = {
 };
 
 function OrdersTableRow({ order }: OrdersTableRowProps) {
+  const { excludedColumns } = useExcludedColumnsQuery();
+
   const locale = useLocale();
   const t = useTranslations('orders');
-  const { excludedColumns } = useExcludedColumnsQuery();
+
   const dateLib = use(getDateLibPromise(locale));
 
   return (
@@ -126,6 +128,21 @@ function OrdersTableRow({ order }: OrdersTableRowProps) {
                   {t('actions.edit')}
                 </DropdownMenuItem>
               </EditOrderDialog>
+
+              <DropdownMenuItem
+                asChild
+                variant='default'
+                className='!text-warning [&_svg]:!text-warning hover:!bg-warning/5 cursor-pointer'
+                onClick={(e) => e.stopPropagation()}
+              >
+                <Link
+                  href={`/dashboard/orders/view/${order.id}/preview`}
+                  className='flex items-center gap-2'
+                >
+                  <Printer />
+                  {t('cards.quickActions.printOrder')}
+                </Link>
+              </DropdownMenuItem>
 
               <DropdownMenuItem
                 asChild

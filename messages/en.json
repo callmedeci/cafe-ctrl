@@ -241,6 +241,19 @@
         "title": "Order {orderName}",
         "description": "View detailed information for order {orderName}, including items, status, customer details, and order notes"
       },
+      "preview": {
+        "metadata": {
+          "title": "Order Preview",
+          "description": "Preview and print your order details in PDF format"
+        },
+        "title": "Order Preview",
+        "description": "Generate a printable PDF version of your order details",
+        "error": {
+          "title": "Unable to load order",
+          "description": "We couldn't load the order details. Please try again.",
+          "tryAgain": "Try again"
+        }
+      },
       "title": "Order {orderName}",
       "description": "View and manage order details, items, and customer information.",
       "goBack": "Go Back",
@@ -290,7 +303,11 @@
       "preview": {
         "title": "#{orderName}",
         "description": "Quick preview of order details",
-        "orderItems": "Order Items"
+        "orderItems": "Order Items",
+        "loading": {
+          "title": "Loading PDF...",
+          "description": "Loading order preview PDF"
+        }
       }
     },
     "menuSelector": {
@@ -883,6 +900,32 @@
     },
     "loading": {
       "loadingData": "Loading analytics data..."
+    }
+  },
+  "pdf": {
+    "title": "Order Details",
+    "orderNumber": "Order #:",
+    "date": "Date:",
+    "customerName": "Customer Name:",
+    "contact": "Contact:",
+    "orderName": "Order Name:",
+    "orderType": "Order Type:",
+    "orderStatus": "Status:",
+    "takeaway": "Take Away",
+    "dineIn": "Dine In",
+    "productName": "Item",
+    "quantity": "Qty",
+    "price": "Price",
+    "currency": "T",
+    "total": "Total:",
+    "notes": "Notes:",
+    "thankYou": "Thank you for your business!",
+    "status": {
+      "paid": "Paid",
+      "unpaid": "Unpaid",
+      "pending": "Pending",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
     }
   },
   "metadata": {

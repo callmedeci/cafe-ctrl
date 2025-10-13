@@ -18,12 +18,12 @@ import { updateOrderStatus } from '@/supabase/data/orders-service';
 import { OrderRow } from '@/types/tables';
 import { Clock, CreditCard } from 'lucide-react';
 import { MouseEvent, useOptimistic, useTransition } from 'react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
+import { cn } from '@/lib/utils';
 
 type OrderIsPaidSelectorProps = { order: OrderRow };
 
 function OrderIsPaidSelector({ order }: OrderIsPaidSelectorProps) {
-  const t = useTranslations('orders');
   const [, startTransition] = useTransition();
   const [optimisticOrder, setOptimisticOrder] = useOptimistic(
     order,
@@ -32,6 +32,10 @@ function OrderIsPaidSelector({ order }: OrderIsPaidSelectorProps) {
       status,
     }),
   );
+
+  const t = useTranslations('orders');
+  const locale = useLocale();
+  const isFa = locale === 'fa';
 
   const isPaid = optimisticOrder.status === 'paid';
 
@@ -75,8 +79,14 @@ function OrderIsPaidSelector({ order }: OrderIsPaidSelectorProps) {
             onClick={(e) => handleUpdateStatus(e, 'paid')}
             className={isPaid ? 'bg-accent/50' : ''}
           >
-            <Badge className='flex w-full items-center justify-start'>
-              <CreditCard />
+            <Badge
+              className={cn(
+                'flex w-full items-center justify-start',
+                isFa ? 'direct-rtl' : 'direct-ltr',
+                !isPaid && 'opacity-50',
+              )}
+            >
+              <CreditCard className='text-primary-foreground' />
               {t('status.paid')}
             </Badge>
           </DropdownMenuItem>
@@ -86,9 +96,13 @@ function OrderIsPaidSelector({ order }: OrderIsPaidSelectorProps) {
           >
             <Badge
               variant={'outline'}
-              className='flex w-full items-center justify-start'
+              className={cn(
+                'border-warning text-warning flex w-full items-center justify-start',
+                isFa ? 'direct-rtl' : 'direct-ltr',
+                isPaid && 'opacity-50',
+              )}
             >
-              <Clock />
+              <Clock className='text-warning' />
               {t('status.unpaid')}
             </Badge>
           </DropdownMenuItem>

@@ -2,13 +2,14 @@
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Copy, FileText, Printer, Settings, Trash2 } from 'lucide-react';
-import { toast } from 'sonner';
+import { Link } from '@/i18n/navigation';
+import { OrderRow } from '@/types/tables';
+import { Copy, Printer, Settings, SquarePen, Trash2 } from 'lucide-react';
+import { useLocale, useTranslations } from 'next-intl';
+import { usePathname } from 'next/navigation';
+import { handleCopyOrderId } from '../../lib/utils';
 import DeleteOrderDialog from '../dialog/DeleteOrderDialog';
 import EditOrderDialog from '../dialog/EditOrderDialog';
-import { OrderRow } from '@/types/tables';
-import { handleCopyOrderId } from '../../lib/utils';
-import { useTranslations } from 'next-intl';
 
 type OrderQuickActionsCardProps = {
   order: OrderRow;
@@ -16,39 +17,41 @@ type OrderQuickActionsCardProps = {
 
 function OrderQuickActionsCard({ order }: OrderQuickActionsCardProps) {
   const t = useTranslations('orders');
-  if (!order) return null;
+  const lcoale = useLocale();
 
-  function handlePrintOrder() {
-    toast.info(t('messages.info.printPreview'), {
-      description: t('messages.info.printDescription'),
-    });
-  }
+  const pathname = usePathname().replace(`${lcoale}/`, '');
+  if (!order) return null;
 
   return (
     <Card className='flex-1'>
       <CardHeader>
         <CardTitle className='flex items-center gap-2 text-base font-semibold'>
-          <Settings className='h-4 w-4' />
+          <Settings />
           {t('cards.quickActions.title')}
         </CardTitle>
       </CardHeader>
       <CardContent className='space-y-2'>
         <EditOrderDialog order={order}>
-          <Button variant='ghost' size='sm' className='w-full justify-start'>
-            <FileText className='h-4 w-4' />
+          <Button
+            variant='ghost'
+            size='sm'
+            className='text-info hover:text-info hover:bg-info/5 w-full justify-start'
+          >
+            <SquarePen className='text-info' />
             {t('cards.quickActions.editOrder')}
           </Button>
         </EditOrderDialog>
 
-        <Button
-          variant='ghost'
-          size='sm'
-          className='w-full justify-start'
-          onClick={handlePrintOrder}
-        >
-          <Printer className='h-4 w-4' />
-          {t('cards.quickActions.printOrder')}
-        </Button>
+        <Link href={`${pathname}/preview`}>
+          <Button
+            variant='ghost'
+            size='sm'
+            className='text-warning hover:text-warning hover:bg-warning/5 w-full justify-start'
+          >
+            <Printer className='text-warning' />
+            {t('cards.quickActions.printOrder')}
+          </Button>
+        </Link>
 
         <Button
           variant='ghost'
@@ -56,7 +59,7 @@ function OrderQuickActionsCard({ order }: OrderQuickActionsCardProps) {
           className='w-full justify-start'
           onClick={(e) => handleCopyOrderId(e, order)}
         >
-          <Copy className='h-4 w-4' />
+          <Copy />
           {t('cards.quickActions.copyOrderId')}
         </Button>
 
@@ -69,7 +72,7 @@ function OrderQuickActionsCard({ order }: OrderQuickActionsCardProps) {
             size='sm'
             className='w-full justify-start'
           >
-            <Trash2 className='h-4 w-4' />
+            <Trash2 />
             {t('cards.quickActions.deleteOrder')}
           </Button>
         </DeleteOrderDialog>

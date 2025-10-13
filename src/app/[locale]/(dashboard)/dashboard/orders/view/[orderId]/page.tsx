@@ -9,27 +9,29 @@ import {
 } from '@/components/ui/card';
 import {
   OrderDetailsCard,
-  OrderItemsCard,
-  OrderNotesCard,
-  OrderItemsCardSkeleton,
-  UpdateOrderActionSkeleton,
-  OrderNotesCardSkeleton,
   OrderDetailsCardSkeleton,
+  OrderItemsCard,
+  OrderItemsCardSkeleton,
+  OrderNotesCard,
+  OrderNotesCardSkeleton,
   OrderQuickActionsContent,
   QuickActionsSkeleton,
   UpdateOrderAction,
+  UpdateOrderActionSkeleton,
 } from '@/features/orders';
 
 import { Link } from '@/i18n/navigation';
 import { searchParamsCache } from '@/lib/utils';
+import { getActiveCharges } from '@/supabase/data/charges-service';
 import {
   getAllOrdersId,
   getOrderById,
   getOrderName,
 } from '@/supabase/data/orders-service';
+import { QueryClient } from '@tanstack/react-query';
 import { ArrowLeft } from 'lucide-react';
 import { Metadata } from 'next';
-import { getLocale, getTranslations } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 
@@ -82,8 +84,13 @@ async function OrderViewPage({
   if (!name || error) notFound();
 
   const t = await getTranslations('orders');
-  const locale = await getLocale();
   searchParamsCache.parse(params);
+
+  const queryClient = new QueryClient();
+  await queryClient.prefetchQuery({
+    queryKey: ['active_charges'],
+    queryFn: getActiveCharges,
+  });
 
   const orderDisplayName = `#${name.replaceAll('-', ' ')}`;
 
@@ -94,10 +101,7 @@ async function OrderViewPage({
         description={t('view.description')}
       >
         <Button variant='link' size='sm' asChild>
-          <Link
-            href='/dashboard/orders'
-            className={`flex ${locale === 'fa' ? 'flex-row-reverse' : ''} items-center`}
-          >
+          <Link href='/dashboard/orders' className={'flex items-center'}>
             <ArrowLeft />
             <span className='hidden sm:block'>{t('view.goBack')}</span>
           </Link>
@@ -115,6 +119,7 @@ async function OrderViewPage({
             </CardTitle>
             <CardDescription>{t('view.overview.description')}</CardDescription>
           </CardHeader>
+
           <CardContent>
             <div className='grid h-full w-full grid-cols-1 gap-4 lg:grid-cols-2'>
               <div className='w-full'>
