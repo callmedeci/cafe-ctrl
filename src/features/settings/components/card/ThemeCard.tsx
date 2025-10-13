@@ -12,7 +12,7 @@ async function ThemeCard() {
   const t = await getTranslations('settings');
 
   return (
-    <Card>
+    <Card className='col-span-2'>
       <CardHeader>
         <CardTitle className='flex items-center gap-2'>
           <Palette className='h-5 w-5' />

@@ -41,7 +41,7 @@ async function SettingsPage() {
       />
 
       <div className='flex flex-col gap-4 p-4'>
-        <div className='grid grid-cols-1 gap-4 xl:grid-cols-2'>
+        <div className='grid grid-cols-1 gap-4 xl:grid-cols-3'>
           <LanguageCard />
           <ThemeCard />
         </div>

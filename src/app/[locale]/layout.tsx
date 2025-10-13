@@ -9,6 +9,7 @@ import { notFound } from 'next/navigation';
 import { NuqsAdapter } from 'nuqs/adapters/next/app';
 import '../globals.css';
 import { getLocale, getTranslations } from 'next-intl/server';
+import { Inter } from 'next/font/google';
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
@@ -71,6 +72,12 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+});
+
 const vazirmatnFD = localFont({
   src: [
     {
@@ -84,7 +91,7 @@ const vazirmatnFD = localFont({
       style: 'normal',
     },
   ],
-  variable: '--font-vazirmatn-fd',
+  variable: '--font-vazirmatn',
   display: 'swap',
 });
 
@@ -108,8 +115,8 @@ export default async function RootLayout({
       </head>
       <body
         className={cn(
-          'min-h-dvh w-full antialiased',
-          isFa && vazirmatnFD.className,
+          `min-h-dvh w-full antialiased`,
+          isFa ? vazirmatnFD.className : inter.className,
         )}
       >
         <ThemeProvider
