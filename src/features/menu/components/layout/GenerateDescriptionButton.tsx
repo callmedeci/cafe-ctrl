@@ -40,11 +40,11 @@ function GenerateDescriptionButton({
           menuId!,
         );
 
-        if (updateError) {
-          toast.error(t('cards.description.generateError'));
+        if (updateError) toast.error(t('cards.description.generateError'));
+        if (!updateError) {
           if (setter) setter(data.description);
+          toast.success(t('cards.description.generateSuccess'));
         }
-        if (!updateError) toast.success(t('cards.description.generateSuccess'));
       }
     });
   }
