@@ -16,6 +16,7 @@ import { Trash2 } from 'lucide-react';
 import { cloneElement, ReactElement, useState, useTransition } from 'react';
 import { toast } from 'sonner';
 import { useTranslations } from 'next-intl';
+import { useRouter } from '@/i18n/navigation';
 
 type DeleteMenuItemProps = {
   menuItemId: number;
@@ -33,6 +34,7 @@ function DeleteMenuItemDialog({
   const t = useTranslations('menu');
   const [isLoading, startTransition] = useTransition();
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const router = useRouter();
 
   async function handleDelete() {
     startTransition(async () => {
@@ -51,11 +53,11 @@ function DeleteMenuItemDialog({
         }
 
         toast.success(t('messages.success.deleted'));
+        if (redirectBack) router.push('/dashboard/menu');
       }
       if (!success) toast.error(error);
 
       setIsOpen(false);
-      if (redirectBack) window.location.href = '/dashboard/menu';
     });
   }
 

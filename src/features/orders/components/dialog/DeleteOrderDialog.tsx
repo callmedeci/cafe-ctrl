@@ -15,27 +15,34 @@ import { Trash2 } from 'lucide-react';
 import { cloneElement, ReactElement, useState, useTransition } from 'react';
 import { toast } from 'sonner';
 import { useTranslations } from 'next-intl';
+import { useRouter } from '@/i18n/navigation';
 
 type DeleteOrderProps = {
   orderId: string;
   children: ReactElement<{ onClick: (e: MouseEvent) => void }>;
   orderName?: string;
+  redirectBack?: boolean;
 };
 
 function DeleteOrderDialog({
   orderId,
   children,
   orderName = 'this order',
+  redirectBack = false,
 }: DeleteOrderProps) {
   const t = useTranslations('orders');
   const [isLoading, startTransition] = useTransition();
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const router = useRouter();
 
   async function handleDelete() {
     startTransition(async () => {
       const { success, error } = await deleteOrder(orderId);
 
-      if (success) toast.success(t('messages.success.deleted'));
+      if (success) {
+        toast.success(t('messages.success.deleted'));
+        if (redirectBack) router.push('/dashboard/orders');
+      }
       if (!success) toast.error(error);
 
       setIsOpen(false);

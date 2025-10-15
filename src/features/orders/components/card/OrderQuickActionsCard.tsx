@@ -64,6 +64,7 @@ function OrderQuickActionsCard({ order }: OrderQuickActionsCardProps) {
         </Button>
 
         <DeleteOrderDialog
+          redirectBack={true}
           orderId={order.id}
           orderName={`#${order.order_name || order.id}`}
         >
