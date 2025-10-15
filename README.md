@@ -51,18 +51,17 @@ Cafe-Ctrl is a modern, full-featured cafe management system designed to streamli
 - Multiple theme options
 - Responsive design
 - Dark/Light mode
-- Role-based access control
 - Custom theme support
 
 ## 🛠️ Technologies
 
-- **Framework**: Next.js 14 (App Router)
+- **Framework**: Next.js 15 (App Router)
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS
 - **State Management**: React Query
 - **Database**: Supabase
 - **Authentication**: Supabase Auth
-- **UI Components**: Radix UI
+- **UI Components**: Shadcn UI
 - **Form Handling**: React Hook Form
 - **PDF Generation**: React-PDF
 - **Internationalization**: Next-Intl
@@ -133,13 +132,10 @@ Cafe-Ctrl is designed to work seamlessly across all devices:
 - Desktop computers
 - Tablets
 - Mobile phones
-- POS systems
 
 ## 🔒 Security Features
 
 - Secure authentication
-- Role-based access control
-- Data encryption
 - Secure API endpoints
 - Protected routes
 
