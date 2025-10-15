@@ -4,7 +4,7 @@
   <img src="https://github.com/callmedeci/cafe-ctrl/blob/main/src/app/icon0.svg" alt="Cafe-Ctrl Logo" width="120" />
   
   ![GitHub package.json version](https://img.shields.io/github/package-json/v/callmedeci/cafe-ctrl)
-  ![GitHub](https://img.shields.io/github/license/callmedeci/cafe-ctrl)
+  ![GitHub](https://img.shields.io/github/license/callmedeci/cafe-ctrl?v=1)
   ![GitHub last commit](https://img.shields.io/github/last-commit/callmedeci/cafe-ctrl)
 </div>
 
