@@ -27,10 +27,6 @@ async function DashboardFooter() {
 
   const userInitials =
     user?.email?.split('@')[0].slice(0, 2).toUpperCase() || 'U';
-  const truncatedEmail =
-    user.email!.length > 20
-      ? user.email?.split('').slice(0, 20).join('') + '...'
-      : user.email;
 
   return (
     <SidebarMenu>
@@ -42,7 +38,7 @@ async function DashboardFooter() {
               className='group h-12 hover:!bg-inherit'
             >
               <SidebarMenuButton>
-                <div className='flex flex-1 items-center gap-2'>
+                <div className='flex w-48 flex-1 items-center gap-2'>
                   <div className='relative'>
                     <Avatar>
                       <AvatarImage
@@ -55,7 +51,7 @@ async function DashboardFooter() {
                     </Avatar>
                     <div className='border-background bg-primary absolute -right-0.5 -bottom-1 h-3 w-3 animate-pulse rounded-full border-2'></div>
                   </div>
-                  <span>{truncatedEmail}</span>
+                  <span className='truncate'>{user.email}</span>
                 </div>
               </SidebarMenuButton>
             </DropdownMenuTrigger>
@@ -67,7 +63,7 @@ async function DashboardFooter() {
             >
               <DropdownMenuItem className='hover:!bg-transparent'>
                 <div
-                  className={`flex ${isFa ? 'flex-1 flex-row-reverse' : ''} items-center gap-2`}
+                  className={`flex items-center gap-2 ${isFa ? 'flex-1 flex-row-reverse' : ''}`}
                 >
                   <Avatar>
                     <AvatarImage
@@ -78,15 +74,15 @@ async function DashboardFooter() {
                       {userInitials}
                     </AvatarFallback>
                   </Avatar>
-                  <div className='flex flex-col'>
+                  <div className='flex w-48 flex-col'>
                     <span
-                      className={`${isFa ? 'text-end' : ''} text-sm font-medium`}
+                      className={`${isFa ? 'text-end' : ''} truncate text-sm font-medium`}
                     >
                       {user.user_metadata.full_name ||
                         user.email!.split('@').at(0)}
                     </span>
-                    <span className='text-muted-foreground text-xs'>
-                      {user.email!.slice(0, 30)}
+                    <span className='text-muted-foreground truncate text-xs'>
+                      {user.email}
                     </span>
                   </div>
                 </div>
