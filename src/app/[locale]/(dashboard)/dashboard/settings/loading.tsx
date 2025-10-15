@@ -11,7 +11,7 @@ function SettingsLoading() {
 
       <div className='flex flex-col gap-4 p-4'>
         {/* Language & Theme Cards */}
-        <div className='grid grid-cols-1 gap-4 xl:grid-cols-2'>
+        <div className='grid grid-cols-1 gap-4 xl:grid-cols-3'>
           {/* Language Card */}
           <Card>
             <CardHeader>
@@ -45,7 +45,7 @@ function SettingsLoading() {
           </Card>
 
           {/* Theme Card */}
-          <Card>
+          <Card className='col-span-2'>
             <CardHeader>
               <div className='flex items-center gap-2'>
                 <Skeleton className='h-5 w-5' aria-hidden='true' />
@@ -53,31 +53,29 @@ function SettingsLoading() {
               </div>
               <Skeleton className='h-4 w-56' aria-hidden='true' />
             </CardHeader>
-            <CardContent>
-              <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3'>
-                {Array.from({ length: 3 }).map((_, index) => (
-                  <div
-                    key={index}
-                    className='group ring-border relative rounded-lg border p-4 ring-2'
-                  >
-                    <div className='space-y-2'>
-                      <div className='flex items-center justify-between'>
-                        <Skeleton className='h-5 w-5' aria-hidden='true' />
-                      </div>
+            <CardContent className='grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-5'>
+              {Array.from({ length: 3 }).map((_, index) => (
+                <div
+                  key={index}
+                  className='group ring-border relative rounded-lg border p-4 ring-2'
+                >
+                  <div className='space-y-2'>
+                    <div className='flex items-center justify-between'>
+                      <Skeleton className='h-5 w-5' aria-hidden='true' />
+                    </div>
 
-                      <Skeleton
-                        className='h-16 w-full rounded-md'
-                        aria-hidden='true'
-                      />
+                    <Skeleton
+                      className='h-16 w-full rounded-md'
+                      aria-hidden='true'
+                    />
 
-                      <div className='space-y-1'>
-                        <Skeleton className='h-4 w-16' aria-hidden='true' />
-                        <Skeleton className='h-3 w-24' aria-hidden='true' />
-                      </div>
+                    <div className='space-y-1'>
+                      <Skeleton className='h-4 w-16' aria-hidden='true' />
+                      <Skeleton className='h-3 w-24' aria-hidden='true' />
                     </div>
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </CardContent>
           </Card>
         </div>
