@@ -71,6 +71,7 @@ function UpdateMenuItemForm({
   });
 
   const isLoading = form.formState.isSubmitting;
+
   const [charLength, setCharLength] = useState<number>(
     menuToUpdate?.description?.length || 0,
   );
@@ -232,6 +233,7 @@ function UpdateMenuItemForm({
                           }}
                         />
                         <GenerateDescriptionButton
+                          setter={field.onChange}
                           menuId={menuToUpdate.id}
                           menuItem={menuToUpdate}
                           className='absolute right-2 bottom-2 z-50'

@@ -8,35 +8,42 @@ import { updateMenuItem } from '@/supabase/data/menu-service';
 import { MenuRow } from '@/types/tables';
 import { Brain } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { useTransition } from 'react';
+import { Dispatch, MouseEvent, SetStateAction, useTransition } from 'react';
 import { toast } from 'sonner';
 
 type GenerateDescriptionButtonProps = {
   menuId: number | null;
   menuItem?: MenuRow;
   className?: string;
+  setter?: Dispatch<SetStateAction<string>>;
 };
 
 function GenerateDescriptionButton({
   menuId,
   menuItem,
   className,
+  setter,
 }: GenerateDescriptionButtonProps) {
   const t = useTranslations('menu');
   const [isPending, startTransition] = useTransition();
 
-  async function handleGenerateDescription() {
+  async function handleGenerateDescription(e: MouseEvent) {
+    e.preventDefault();
+
     startTransition(async () => {
       const { data, error } = await menuDescriptionGenerator(menuId!, menuItem);
 
-      if (error) toast.error(t('cards.description.generateError'));
+      if (error || !data) toast.error(t('cards.description.generateError'));
       else {
         const { error: updateError } = await updateMenuItem(
-          { description: data?.description },
+          { description: data.description },
           menuId!,
         );
 
-        if (updateError) toast.error(t('cards.description.generateError'));
+        if (updateError) {
+          toast.error(t('cards.description.generateError'));
+          if (setter) setter(data.description);
+        }
         if (!updateError) toast.success(t('cards.description.generateSuccess'));
       }
     });
@@ -49,6 +56,7 @@ function GenerateDescriptionButton({
       className={cn('justify-start', className)}
       onClick={handleGenerateDescription}
       disabled={isPending}
+      type='button'
     >
       {isPending ? <Spinner /> : <Brain />}
       {isPending
