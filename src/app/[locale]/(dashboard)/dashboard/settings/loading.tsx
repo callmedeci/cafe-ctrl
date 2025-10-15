@@ -54,25 +54,24 @@ function SettingsLoading() {
               <Skeleton className='h-4 w-56' aria-hidden='true' />
             </CardHeader>
             <CardContent className='grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-5'>
-              {Array.from({ length: 3 }).map((_, index) => (
+              {Array.from({ length: 9 }).map((_, index) => (
                 <div
                   key={index}
-                  className='group ring-border relative rounded-lg border p-4 ring-2'
+                  className='group hover:border-primary/50 relative flex items-center justify-center rounded-md border px-3 py-2'
                 >
-                  <div className='space-y-2'>
-                    <div className='flex items-center justify-between'>
-                      <Skeleton className='h-5 w-5' aria-hidden='true' />
+                  <div className='w-full'>
+                    <div className='flex justify-center'>
+                      <Skeleton className='h-4 w-20' aria-hidden='true' />
                     </div>
 
-                    <Skeleton
-                      className='h-16 w-full rounded-md'
-                      aria-hidden='true'
-                    />
-
-                    <div className='space-y-1'>
-                      <Skeleton className='h-4 w-16' aria-hidden='true' />
-                      <Skeleton className='h-3 w-24' aria-hidden='true' />
-                    </div>
+                    {index === 0 && (
+                      <div className='absolute -top-1.5 -right-1.5'>
+                        <Skeleton
+                          className='h-5 w-5 rounded-full'
+                          aria-hidden='true'
+                        />
+                      </div>
+                    )}
                   </div>
                 </div>
               ))}
