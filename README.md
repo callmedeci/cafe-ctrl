@@ -72,7 +72,7 @@ Cafe-Ctrl is a modern, full-featured cafe management system designed to streamli
 ### Prerequisites
 
 - Node.js 18.17 or later
-- pnpm (recommended) or npm
+- npm
 - Supabase account
 
 ### Installation
